@@ -51,7 +51,8 @@ const Login = (props) => {
           logIn()
         }
       })
-  
+    }
+    
     // Authentication calls will be made here...
     // Call the server API to check if the given email ID already exists
     const checkAccountExists = (callback) => {
@@ -88,7 +89,6 @@ const Login = (props) => {
           window.alert('Wrong email or password')
         }
       })
-  }
   }
 
   return (
