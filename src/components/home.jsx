@@ -11,7 +11,7 @@ const Home = (props) => {
       props.setLoggedIn(false)
     } else {
       // goes to login page
-      navigate('/login')
+      navigate('/login_new')
     }
   }
 
