@@ -9,6 +9,31 @@ import password_icon from '../../assets/padlock.png'
 const Login = () => {
 
   const [action, setAction] = useState("Login");
+  const [name, setName] = useState("Name");
+  const click = () => {
+    alert(name)
+  }
+  const change = event => {
+    setName(event.target.value)
+  }
+
+  // const fs = require('fs');
+
+  // let data = fs.readFileSync('userData.json');
+  // let users = JSON.parse(data);
+
+  // let user = {
+  //   username: "new_username",
+  //   password: "new_password"
+  // };
+
+  // user.push(user);
+
+  // fs.writeFile('userData.json', JSON.stringify(user), function(err) {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  // });
 
   return (
     <div className='container'>
@@ -19,7 +44,7 @@ const Login = () => {
       <div className='inputs'>
         {action==="Login"?<div></div>:<div className='input'>
           <img src={user_icon} alt="" />
-          <input type="name" placeholder="Name"/>
+          <input onChange={change} value = {name} type="name" placeholder="Name"/>
         </div>}
         <div className='input'>
           <img src={user_icon} alt="" />
