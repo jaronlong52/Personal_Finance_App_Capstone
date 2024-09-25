@@ -12,29 +12,7 @@ function App() {
     .catch(err => console.log(err));
   }, [])
   return (
-    <div style={{padding: "50px"}}>
-      <table>
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Password</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((d, i) => {
-            <tr key={i}>
-              <td>{d.username}</td>
-              <td>{d.name}</td>
-              <td>{d.email}</td>
-              <td>{d.password}</td>
-            </tr>
-          })}
-        </tbody>
-      </table>
-      {/* <Login/> */}
-    </div>
+    <Login/>
   )
 }
 
