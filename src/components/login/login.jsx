@@ -17,24 +17,6 @@ const Login = () => {
     setName(event.target.value)
   }
 
-  // const fs = require('fs');
-
-  // let data = fs.readFileSync('userData.json');
-  // let users = JSON.parse(data);
-
-  // let user = {
-  //   username: "new_username",
-  //   password: "new_password"
-  // };
-
-  // user.push(user);
-
-  // fs.writeFile('userData.json', JSON.stringify(user), function(err) {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  // });
-
   return (
     <div className='container'>
       <div className='header'>
