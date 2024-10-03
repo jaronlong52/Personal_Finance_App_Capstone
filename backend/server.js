@@ -13,23 +13,6 @@ const db = mysql.createConnection({
     database: 'qwik_finance'
 })
 
-app.post('/checkRegister', (req, res) => {
-
-    const username = req.body.username;
-
-    db.query('SELECT * FROM users WHERE username = ?', 
-        [username],
-        (err, result) => {
-            if (err) {
-                res.send({err: err})
-            }
-            if (result.length > 0) {
-                res.send('true');
-            }
-        }
-    )
-});
-
 app.post('/register', (req, res) => {
 
     const username = req.body.username;
@@ -65,7 +48,7 @@ app.post('/login', (req, res) => {
 });
 
 app.get('/users', (req, res) => {
-    const sql = "SELECT * FROM users";
+    const sql = "SELECT username FROM users";
     console.log(db);
     db.query(sql, (err, data) => {
         if(err) return res.json(err);
