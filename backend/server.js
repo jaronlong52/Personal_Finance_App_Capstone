@@ -39,9 +39,9 @@ app.post('/login', (req, res) => {
                 res.send({err: err})
             }
             if (result.length > 0) {
-                res.send(result)
+                res.send({message: "Valid"})
             } else {
-                res.send({message: "Wrong combination"});
+                res.send({message: "Invalid"});
             }
         }
     );

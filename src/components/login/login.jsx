@@ -8,7 +8,7 @@ import password_icon from '../../assets/padlock.png'
 
 const Login = () => {
   // for navigation to other pages
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // for the Sign up and Login switching functionality
   const [action, setAction] = useState("Login");
@@ -17,9 +17,6 @@ const Login = () => {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  // whether user is logged in or not
-  const [loginStatus, setLoginStatus] = useState('');
 
   // all usernames in database
   const [usernames, setUsernames] = useState([]);
@@ -106,6 +103,8 @@ const Login = () => {
     }).then((response) => {
       console.log(response);
     });
+
+    navigate('../Dashboard');
   };
 
   // test user input and, if valid, let user access data
@@ -120,16 +119,11 @@ const Login = () => {
       username: username, 
       password: password,
     }).then((response) => {
-      if (response.data.message) {
-        setLoginStatus('false')
-      } else {
-        setLoginStatus('true')
+      console.log(response);
+      if (response.data.message === 'Valid') {
+        navigate('../Dashboard');
       }
     });
-
-    // if (loginStatus === 'true') {
-    //   navigate('../Dashboard');
-    // }
   };
 
   return (

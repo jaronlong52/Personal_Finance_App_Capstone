@@ -1,5 +1,4 @@
 import Page_routes from './page_routes';
-import './App.css'
 import React from 'react'
 
 const App = () => {
