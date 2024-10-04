@@ -123,3 +123,9 @@
     background: #EAEAEA;
     color: #676767;
 }
+
+.error-label{
+    display: flex;
+    margin-left: 70px;
+    color: red;
+}
