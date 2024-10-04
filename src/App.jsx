@@ -1,15 +1,13 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Login from './components/login/login'
+import Page_routes from './page_routes';
 import './App.css'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-function App() {
-
+const App = () => {
   return (
     <div>
-      <Login/>
+      <Page_routes/>
     </div>
-  )
+  );
 }
 
 export default App

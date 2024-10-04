@@ -7,6 +7,8 @@ import user_icon from '../../assets/user.png'
 import password_icon from '../../assets/padlock.png'
 
 const Login = () => {
+  // for navigation to other pages
+  // const navigate = useNavigate();
 
   // for the Sign up and Login switching functionality
   const [action, setAction] = useState("Login");
@@ -106,10 +108,6 @@ const Login = () => {
     });
   };
 
-  // TO DO
-  // validate and authenticate user input 
-  // navigate to dashboard upon login so pull dashboard files into branch
-
   // test user input and, if valid, let user access data
   const login = () => {
 
@@ -129,8 +127,8 @@ const Login = () => {
       }
     });
 
-    // if (loginStatus === 'false') {
-
+    // if (loginStatus === 'true') {
+    //   navigate('../Dashboard');
     // }
   };
 
