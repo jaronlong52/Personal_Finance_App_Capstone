@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Dashboard.css';
+import Income from './Income.jsx'
+import Preview from './preview.jsx';
 
 function Dashboard() {
   const [toggleState, setToggleState] = useState(1);
@@ -33,7 +35,7 @@ function Dashboard() {
           className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(3)}
         >
-          Planning
+          Payment
         </div>
       </div>
 
@@ -42,7 +44,7 @@ function Dashboard() {
           <div className="tabs active-tabs">
             <h2>Dashboard</h2>
             <hr />
-            <p>Placeholder for dashboard info</p>
+            <Preview/>
           </div>
         )}
 
@@ -50,13 +52,13 @@ function Dashboard() {
           <div className="tabs active-tabs">
             <h2>Income</h2>
             <hr />
-            <p>Placeholder for income info page</p>
+            <Income/>
           </div>
         )}
 
         {toggleState === 3 && (
           <div className="tabs active-tabs">
-            <h2>Planning</h2>
+            <h2>Payment</h2>
             <hr />
             <p>Placeholder for planning tab</p>
           </div>

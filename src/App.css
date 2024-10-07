@@ -1,1 +1,5 @@
-
+.title {
+    text-align: center; /* Center the text horizontally */
+    font-size: 24px; /* Adjust the font size */
+    color: black; /* Change the text color */
+}
