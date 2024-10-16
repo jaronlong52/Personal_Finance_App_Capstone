@@ -8,9 +8,7 @@ import Preview from './components/preview'
 function App() {
   return (
     <div>
-      <div className='title'>
-        <h1>Qwik Finance</h1>
-      </div>
+
       <DashBoard/>
     </div>
   )

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Dashboard.css';
 import Income from './Income.jsx'
 import Preview from './preview.jsx';
+import Piechart from './chartjspie.jsx'
 
 function Dashboard() {
   const [toggleState, setToggleState] = useState(1);
@@ -42,9 +43,10 @@ function Dashboard() {
       <div className="content-tabs">
         {toggleState === 1 && (
           <div className="tabs active-tabs">
-            <h2>Dashboard</h2>
-            <hr />
-            <Preview/>
+            <div className='fullpre'>
+              <div><Preview/></div>
+              <div className='chart'><Piechart/></div>
+            </div>
           </div>
         )}
 
