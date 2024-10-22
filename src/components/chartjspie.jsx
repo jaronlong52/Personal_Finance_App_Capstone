@@ -21,6 +21,8 @@ const chartjspie = () => {
 
     return (
         <div className='pie'>
+            <div>
+            </div>
            <div
            style = {
             {
