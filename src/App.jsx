@@ -1,17 +1,12 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Login from './components/login/login'
-import './App.css'
-import { useEffect, useState } from 'react'
-import DashBoard from './components/dashboard'
-import Preview from './components/preview'
+import Page_routes from './page_routes';
+import React from 'react'
 
-function App() {
+const App = () => {
   return (
     <div>
-
-      <DashBoard/>
+      <Page_routes/>
     </div>
-  )
+  );
 }
 
 export default App

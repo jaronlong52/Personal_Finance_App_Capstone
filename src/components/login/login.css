@@ -3,7 +3,8 @@
     flex-direction: column;
     margin: auto;
     margin-top: 25px;
-    width: 600px;
+    width: 60px;
+    height: 100%;
     background: #fff;
     padding-bottom: 30px;
     border-radius: 50px;
@@ -76,10 +77,33 @@
     cursor: pointer;
 }
 
-.submit-container{
+.info-submit-container{
     display:flex;
+    margin: 50px auto;
+}
+
+.info-submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 470px;
+    height: 59px;
+    color: #fff;
+    background: #20690a;
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+    border-style: none;
+}
+
+.submit-container{
+    display: flex;
     gap: 30px;
-    margin: 60px auto;
+    margin-top: -30px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .submit{
@@ -99,4 +123,10 @@
 .gray{
     background: #EAEAEA;
     color: #676767;
+}
+
+.error-label{
+    display: flex;
+    margin-left: 70px;
+    color: red;
 }
