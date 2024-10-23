@@ -1,19 +1,12 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Login from './components/login/login'
-import './App.css'
-import React, { useEffect, useState } from 'react'
+import Page_routes from './page_routes';
+import React from 'react'
 
-function App() {
-  const [data, setData] = useState([])
-  useEffect(() => {
-    fetch('http://cs4800.cs.appstate.edu:8081/users')
-    .then(res => res.json())
-    .then(data => setData(data))
-    .catch(err => console.log(err));
-  }, [])
+const App = () => {
   return (
-    <Login/>
-  )
+    <div>
+      <Page_routes/>
+    </div>
+  );
 }
 
 export default App
