@@ -4,8 +4,51 @@
     margin-top: 20px;
   }
   
-  .income-table th, .income-table td {
-    border: 1px solid #e25959;
+.income-table th, .income-table td {
+    border: 1px solid #ffffff;
     padding: 8px;
     text-align: left;
-  }
+}
+
+.inputs{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.input{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 450px;
+    height: 30px;
+    background: #eaeaea;
+    border-radius: 15px;
+    font-size: 19px;
+    padding: 10px;
+}
+
+.comments{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 650px;
+    height: 30px;
+    background: #eaeaea;
+    border-radius: 15px;
+    font-size: 19px;
+    padding: 10px;
+}
+
+.income-submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    color: #6a6a6a;
+    background: #eaeaea;
+    border-radius: 15px;
+    font-size: 19px;
+    font-weight: 600;
+    cursor: pointer;
+}
