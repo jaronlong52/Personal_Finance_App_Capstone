@@ -1,0 +1,11 @@
+.income-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .income-table th, .income-table td {
+    border: 1px solid #e25959;
+    padding: 8px;
+    text-align: left;
+  }
