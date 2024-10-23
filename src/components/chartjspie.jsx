@@ -10,11 +10,11 @@ ChartJS.register(
 
 const chartjspie = () => {
     const data = {
-        labels: ['one', 'two', 'three'],
+        labels: ['Housing', 'Food', 'Utilities', 'Savings', 'Transportation', 'Recreation'],
         datasets: [
             {
-                data: [3,4,5],
-                backgroundColor: ['aqua', 'red', 'blue']
+                data: [30,17,9,18,8,18],
+                backgroundColor: ['aqua', 'red', 'blue', 'yellow', 'orange', 'purple']
             }
         ]
     }
