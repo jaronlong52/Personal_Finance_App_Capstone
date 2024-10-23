@@ -148,7 +148,7 @@ const Login = () => {
           </div>
           <label className="error-label" htmlFor="password">{errorPassword}</label>
         </div>
-        {action==="Sign Up"?<div></div>:<div className="forgot-password">Forget Password? <span>Click Here!</span></div>}
+        {/* {action==="Sign Up"?<div></div>:<div className="forgot-password">Forget Password? <span>Click Here!</span></div>} */}
         <div className="info-submit-container">
           <button className="info-submit" type='submit' onClick={action==="Sign Up"?register:login}>Submit</button>
         </div>
