@@ -127,8 +127,8 @@ const Login = () => {
   };
 
   return (
-    <div className='container'>
-        <div className='header'>
+    <div className='login-container'>
+        <div className='login-header'>
           <div className='text'>Qwik Finance</div>
           <div className='underline'></div>
         </div>
@@ -137,6 +137,7 @@ const Login = () => {
             <img src={user_icon} alt="" />
             <input type="name" value={name} onChange={e => setName(e.target.value)} placeholder="Name"/>
           </div>}
+          <label className="error-label" htmlFor="name"></label>
           <div className='input'>
             <img src={user_icon} alt="" />
             <input id="username" type="username" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username"/>
