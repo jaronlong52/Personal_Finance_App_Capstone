@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from './components/login/login'
-import Dashboard from './components/dashboard/dashboard'
+import Dashboard from './components/dashboard'
 
 const Page_routes = () => {
   return (
