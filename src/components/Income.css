@@ -10,13 +10,13 @@
     text-align: left;
 }
 
-.inputs{
+.income-inputs{
     display: flex;
     flex-direction: row;
     gap: 25px;
 }
 
-.input{
+.income-input{
     display: flex;
     align-items: center;
     margin: auto;

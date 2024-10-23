@@ -10,9 +10,9 @@ function Income() {
 
     return (
         <div className="container">
-            <div className="inputs">
-                <input className="input" type="date" placeholder='date' />
-                <input className="input" type="amount" placeholder='Amount' />
+            <div className="income-inputs">
+                <input className="income-input" type="date" placeholder='date' />
+                <input className="income-input" type="amount" placeholder='Amount' />
                 <input className="comments" type="comments" placeholder='Comments' />
                 <button className='income-submit'>Submit</button>
             </div>
