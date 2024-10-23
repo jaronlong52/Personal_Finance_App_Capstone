@@ -68,7 +68,7 @@ const Login = () => {
     }
 
     if (password.length < 6) {
-      setErrorUsername('Password must be at least 6 characters');
+      setErrorPassword('Password must be at least 6 characters');
       return
     }
 
