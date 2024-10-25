@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './login.css'
 import axios from 'axios';
+import UsernameContextProvider, { UsernameContext } from '../../contexts/UsernameContext';
 
 import user_icon from '../../assets/user.png'
 import password_icon from '../../assets/padlock.png'
@@ -126,6 +127,12 @@ const Login = () => {
     });
   };
 
+  const handleUsername = (e) => {
+    setUsername(e.target.value);
+    const { variable, setVariable } = useContext(UsernameContext);
+    setVariable(e.target.value);
+  }
+
   return (
     <div className='login-container'>
         <div className='login-header'>
@@ -140,7 +147,7 @@ const Login = () => {
           <label className="error-label" htmlFor="name"></label>
           <div className='input'>
             <img src={user_icon} alt="" />
-            <input id="username" type="username" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username"/>
+            <input id="username" type="username" value={username} onChange={handleUsername} placeholder="Username"/>
           </div>
           <label className="error-label" htmlFor="username">{errorUsername}</label>
           <div className='input'>

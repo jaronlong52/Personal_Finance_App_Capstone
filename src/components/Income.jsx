@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Income.css';
+import { UsernameContext } from '../contexts/UsernameContext';
 
-function Income() {
+const Income = () => {
+    const { variable, setVariable } = useContext(UsernameContext);
+
     const [data, setData] = useState([
         { Date: '10/04/24', Amount: 1600, Comments: 'Weekly salary'},
         { Date: '10/09/24', Amount: 400, Comments: 'Side hustle'},

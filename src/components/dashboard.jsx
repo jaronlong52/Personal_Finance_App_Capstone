@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './Dashboard.css';
-import Income from './Income.jsx'
+import Income from './Income.jsx';
 import Preview from './preview.jsx';
-import Piechart from './chartjspie.jsx'
+import Piechart from './chartjspie.jsx';
+import UsernameContextProvider from '../contexts/UsernameContext.jsx';
 
 function Dashboard() {
   const [toggleState, setToggleState] = useState(1);
@@ -44,7 +45,9 @@ function Dashboard() {
         {toggleState === 1 && (
           <div className="tabs active-tabs">
             <div className='fullpre'>
-              <div><Preview/></div>
+              <UsernameContextProvider>
+                <div><Preview/></div>
+              </UsernameContextProvider>
               <div className='chart'><Piechart/></div>
             </div>
           </div>
@@ -54,7 +57,9 @@ function Dashboard() {
           <div className="tabs active-tabs">
             <h2>Income</h2>
             <hr />
-            <Income/>
+            <UsernameContextProvider>
+              <Income/>
+            </UsernameContextProvider>
           </div>
         )}
 
