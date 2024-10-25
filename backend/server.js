@@ -56,14 +56,13 @@ app.get('/users', (req, res) => {
     })
 })
 
-app.get('/income', (req, res) => {
-    const sql = "SELECT * FROM income";
-    console.log(db);
-    db.query(sql, (err, data) => {
+app.post('/income', (req, res) => {
+    const username = req.body.username;
+    db.query('SELECT * FROM income WHERE username = ?', [username], (err, data) => {
         if(err) return res.json(err);
         return res.json(data);
-    })
-})
+    });
+});
 
 app.listen(8081, () => {
     console.log("listening");
