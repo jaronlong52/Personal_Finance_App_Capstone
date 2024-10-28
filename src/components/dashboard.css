@@ -28,6 +28,7 @@
     background: #fff;
     border-bottom: 1px solid transparent;
     font-weight: bold;
+    cursor: default;
   }
   
   .content-tabs {
