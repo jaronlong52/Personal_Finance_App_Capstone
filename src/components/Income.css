@@ -16,6 +16,13 @@
     gap: 25px;
 }
 
+.income-display{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    margin-top: 20px;
+}
+
 .income-input{
     display: flex;
     align-items: center;
