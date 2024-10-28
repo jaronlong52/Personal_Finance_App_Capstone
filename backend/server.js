@@ -58,7 +58,8 @@ app.get('/users', (req, res) => {
 
 app.post('/income', (req, res) => {
     const username = req.body.username;
-    db.query('SELECT * FROM income WHERE username = ?', [username], (err, data) => {
+    const pastDate = req.body.pastDate;
+    db.query('SELECT * FROM income WHERE username = ? and date >= ?', [username, pastDate], (err, data) => {
         if(err) return res.json(err);
         return res.json(data);
     });
