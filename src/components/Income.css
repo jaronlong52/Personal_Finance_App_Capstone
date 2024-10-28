@@ -1,19 +1,37 @@
+.income-container {
+    height: 100%;
+    cursor: default;
+}
+
 .income-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    cursor: default;
   }
   
-.income-table th, .income-table td {
+.income-table th {
     border: 1px solid #ffffff;
     padding: 8px;
     text-align: left;
+    cursor: default;
 }
 
-.income-inputs{
-    display: flex;
-    flex-direction: row;
-    gap: 25px;
+.income-table-date {
+    width: 250px;
+    cursor: default;
+}
+
+.income-table-amount {
+    width: 250px;
+    cursor: default;
+}
+
+.income-table td {
+    border: 1px solid #ffffff;
+    padding: 8px;
+    text-align: left;
+    font-weight: 400;
+    cursor: default;
 }
 
 .income-display{
@@ -21,6 +39,34 @@
     flex-direction: row;
     gap: 25px;
     margin-top: 20px;
+    cursor: default;
+}
+
+.income-dropdown-class {
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1.5px, solid, #1e1e1e;
+    cursor: pointer;
+}
+
+.get-records {
+    width: 110px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1.5px, solid, #1e1e1e;
+    cursor: pointer;
+}
+
+.income-inputs{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    margin-bottom: 30px;
 }
 
 .income-input{
@@ -28,11 +74,14 @@
     align-items: center;
     margin: auto;
     width: 450px;
-    height: 30px;
+    height: 25px;
     background: #eaeaea;
     border-radius: 15px;
+    border: 2px, solid, #1e1e1e;
     font-size: 19px;
     padding: 10px;
+    font-weight: 300;
+    color: #000000;
 }
 
 .comments{
@@ -40,11 +89,14 @@
     align-items: center;
     margin: auto;
     width: 650px;
-    height: 30px;
+    height: 25px;
     background: #eaeaea;
     border-radius: 15px;
+    border: 2px, solid, #1e1e1e;
     font-size: 19px;
     padding: 10px;
+    font-weight: 300;
+    color: #000000;
 }
 
 .income-submit{
@@ -52,10 +104,11 @@
     justify-content: center;
     align-items: center;
     width: 250px;
-    color: #6a6a6a;
+    color: #000000;
     background: #eaeaea;
     border-radius: 15px;
+    border: 2px, solid, #1e1e1e;
     font-size: 19px;
-    font-weight: 600;
+    font-weight: 550;
     cursor: pointer;
 }

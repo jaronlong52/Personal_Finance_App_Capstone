@@ -64,7 +64,7 @@ const Income = () => {
       }, []);
 
     return (
-        <div className="container">
+        <div className="income-container">
             <div className="income-inputs">
                 <input className="income-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 <input className="income-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>
@@ -72,7 +72,7 @@ const Income = () => {
                 <button className='income-submit'>Submit</button>
             </div>
             <div className='income-display'>
-                <select 
+                <select className='income-dropdown-class'
                 name="income-dropdown" 
                 id="income-dropdown" 
                 value={selected} 
@@ -88,9 +88,9 @@ const Income = () => {
             <table className="income-table">
                     <thead>
                         <tr>
-                            <th>Date (yyyy-mm-dd)</th>
-                            <th>Amount ($)</th>
-                            <th>Comments</th>
+                            <th className='income-table-date'>Date (yyyy-mm-dd)</th>
+                            <th className='income-table-amount'>Amount ($)</th>
+                            <th className='income-table-comments'>Comments</th>
                         </tr>
                     </thead>
                     <tbody>
