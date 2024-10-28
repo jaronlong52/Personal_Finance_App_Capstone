@@ -25,11 +25,21 @@ const Income = () => {
     ]
 
     const getRecords = () => {
-        axios.post('http://localhost:8081/income', {username: variable, pastDate: pastDate,})
+        axios.post('http://localhost:8081/income/getRecords', {username: variable, pastDate: pastDate,})
         .then(res => {
           console.log(res)
           setData(res.data);
         });
+    }
+
+    const inputRecord = () => {
+        axios.post('http://localhost:8081/income/inputRecord', {username: variable, date: date, amount: amount, comments: comments})
+        .then(res => {
+          console.log(res);
+        });
+        setDate('');
+        setAmount('');
+        setComments('');
     }
 
     const dropdown = (e) => {
@@ -61,7 +71,7 @@ const Income = () => {
 
     useEffect(() => {
         getRecords();
-      }, []);
+      }, [date]);
 
     return (
         <div className="income-container">
@@ -69,7 +79,7 @@ const Income = () => {
                 <input className="income-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 <input className="income-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>
                 <input className="comments" value={comments} placeholder='Comments' onChange={(e) => setComments(e.target.value)}/>
-                <button className='income-submit'>Submit</button>
+                <button className='income-submit' onClick={inputRecord}>Submit</button>
             </div>
             <div className='income-display'>
                 <select className='income-dropdown-class'
