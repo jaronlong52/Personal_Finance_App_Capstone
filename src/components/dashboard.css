@@ -28,6 +28,7 @@
     background: #fff;
     border-bottom: 1px solid transparent;
     font-weight: bold;
+    cursor: default;
   }
   
   .content-tabs {
@@ -42,3 +43,8 @@
   hr {
     margin: 50px 0;
   }
+
+.divider {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

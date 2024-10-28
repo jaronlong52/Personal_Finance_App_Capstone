@@ -56,7 +56,7 @@ function Dashboard() {
         {toggleState === 2 && (
           <div className="tabs active-tabs">
             <h2>Income</h2>
-            <hr />
+            <hr className='divider'/>
             <UsernameContextProvider>
               <Income/>
             </UsernameContextProvider>
@@ -66,7 +66,7 @@ function Dashboard() {
         {toggleState === 3 && (
           <div className="tabs active-tabs">
             <h2>Payment</h2>
-            <hr />
+            <hr className='divider'/>
             <p>Placeholder for planning tab</p>
           </div>
         )}
