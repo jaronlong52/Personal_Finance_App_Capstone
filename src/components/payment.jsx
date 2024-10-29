@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import './Income.css';
+import './payment.css';
 import { UsernameContext } from '../contexts/UsernameContext';
 import axios from 'axios';
 
-const Income = () => {
+const Payment = () => {
     const { variable, setVariable } = useContext(UsernameContext);
     const [data, setData] = useState([]);
 
@@ -25,7 +25,7 @@ const Income = () => {
     ]
 
     const getRecords = () => {
-        axios.post('http://localhost:8081/income/getRecords', {username: variable, pastDate: pastDate,})
+        axios.post('http://localhost:8081/payment/getRecords', {username: variable, pastDate: pastDate,})
         .then(res => {
           console.log(res)
           setData(res.data);
@@ -33,7 +33,7 @@ const Income = () => {
     }
 
     const inputRecord = () => {
-        axios.post('http://localhost:8081/income/inputRecord', {username: variable, date: date, amount: amount, comments: comments})
+        axios.post('http://localhost:8081/payment/inputRecord', {username: variable, date: date, amount: amount, comments: comments})
         .then(res => {
           console.log(res);
         });
@@ -74,17 +74,17 @@ const Income = () => {
       }, [date]);
 
     return (
-        <div className="income-container">
-            <div className="income-inputs">
-                <input className="income-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
-                <input className="income-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>
-                <input className="income-comments" value={comments} placeholder='Comments' onChange={(e) => setComments(e.target.value)}/>
-                <button className='income-submit' onClick={inputRecord}>Submit</button>
+        <div className="payment-container">
+            <div className="payment-inputs">
+                <input className="payment-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
+                <input className="payment-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>
+                <input className="payment-comments" value={comments} placeholder='Comments' onChange={(e) => setComments(e.target.value)}/>
+                <button className='payment-submit' onClick={inputRecord}>Submit</button>
             </div>
-            <div className='income-display'>
-                <select className='income-dropdown-class'
-                name="income-dropdown" 
-                id="income-dropdown" 
+            <div className='payment-display'>
+                <select className='payment-dropdown-class'
+                name="payment-dropdown" 
+                id="payment-dropdown" 
                 value={selected} 
                 onChange={dropdown}>
                     {options.map((option) => (
@@ -93,14 +93,14 @@ const Income = () => {
                         </option>
                     ))}
                 </select>
-                <button className='get-records' onClick={getRecords}>Get Records</button>
+                <button className='payment-get-records' onClick={getRecords}>Get Records</button>
             </div>
-            <table className="income-table">
+            <table className="payment-table">
                     <thead>
                         <tr>
-                            <th className='income-table-date'>Date (yyyy-mm-dd)</th>
-                            <th className='income-table-amount'>Amount ($)</th>
-                            <th className='income-table-comments'>Comments</th>
+                            <th className='payment-table-date'>Date (yyyy-mm-dd)</th>
+                            <th className='payment-table-amount'>Amount ($)</th>
+                            <th className='payment-table-comments'>Comments</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -117,4 +117,4 @@ const Income = () => {
     )
 }
 
-export default Income
+export default Payment
