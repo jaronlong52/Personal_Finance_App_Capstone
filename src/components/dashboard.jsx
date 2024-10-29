@@ -38,7 +38,7 @@ function Dashboard() {
           className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(3)}
         >
-          Payment
+          Payments
         </div>
       </div>
 
@@ -66,7 +66,7 @@ function Dashboard() {
 
         {toggleState === 3 && (
           <div className="tabs active-tabs">
-            <h2>Payment</h2>
+            <h2>Payments</h2>
             <hr className='divider'/>
             <UsernameContextProvider>
               <Payment/>
