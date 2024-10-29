@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Dashboard.css';
 import Income from './Income.jsx';
+import Payment from './payment.jsx';
 import Preview from './preview.jsx';
 import Piechart from './chartjspie.jsx';
 import UsernameContextProvider from '../contexts/UsernameContext.jsx';
