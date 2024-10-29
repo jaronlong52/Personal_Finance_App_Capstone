@@ -67,7 +67,9 @@ function Dashboard() {
           <div className="tabs active-tabs">
             <h2>Payment</h2>
             <hr className='divider'/>
-            <p>Placeholder for planning tab</p>
+            <UsernameContextProvider>
+              <Payment/>
+            </UsernameContextProvider>
           </div>
         )}
       </div>
