@@ -80,6 +80,30 @@ app.post('/income/inputRecord', (req, res) => {
     );
 });
 
+app.post('/payment/getRecords', (req, res) => {
+    const username = req.body.username;
+    const pastDate = req.body.pastDate;
+    db.query('SELECT * FROM payment WHERE username = ? and date >= ?', [username, pastDate], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
+app.post('/payment/inputRecord', (req, res) => {
+
+    const username = req.body.username;
+    const date = req.body.date;
+    const amount = req.body.amount;
+    const comments = req.body.comments;
+
+    db.query('INSERT INTO payment (username, date, amount, comments) VALUES (?,?,?,?)', 
+        [username, date, amount, comments],
+        (err, result) => {
+            console.log(err);
+        }
+    );
+});
+
 app.listen(8081, () => {
     console.log("listening");
 })
