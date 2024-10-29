@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import './Payment.css';
+import './payment.css';
 import { UsernameContext } from '../contexts/UsernameContext';
 import axios from 'axios';
 
@@ -93,7 +93,7 @@ const Payment = () => {
                         </option>
                     ))}
                 </select>
-                <button className='get-records' onClick={getRecords}>Get Records</button>
+                <button className='payment-get-records' onClick={getRecords}>Get Records</button>
             </div>
             <table className="payment-table">
                     <thead>

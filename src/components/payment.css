@@ -10,7 +10,7 @@
   }
   
 .payment-table th {
-    border: 1px solid #ffffff;
+    border: 1px solid #bdbdbd;
     padding: 8px;
     text-align: left;
     cursor: default;
@@ -27,7 +27,7 @@
 }
 
 .payment-table td {
-    border: 1px solid #ffffff;
+    border: 1px solid #bdbdbd;
     padding: 8px;
     text-align: left;
     font-weight: 400;
@@ -52,7 +52,7 @@
     cursor: pointer;
 }
 
-.get-records {
+.payment-get-records {
     width: 110px;
     height: 30px;
     font-size: 15px;
