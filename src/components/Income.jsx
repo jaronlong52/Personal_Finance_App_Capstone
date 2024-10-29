@@ -78,7 +78,7 @@ const Income = () => {
             <div className="income-inputs">
                 <input className="income-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 <input className="income-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>
-                <input className="comments" value={comments} placeholder='Comments' onChange={(e) => setComments(e.target.value)}/>
+                <input className="income-comments" value={comments} placeholder='Comments' onChange={(e) => setComments(e.target.value)}/>
                 <button className='income-submit' onClick={inputRecord}>Submit</button>
             </div>
             <div className='income-display'>
