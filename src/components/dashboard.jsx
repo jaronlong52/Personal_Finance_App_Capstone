@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './Dashboard.css';
 import Income from './Income.jsx';
 import Preview from './preview.jsx';
-import Piechart from './chartjspie.jsx';
+import Budget from './budget.jsx'
+import PieChart from './chartjspie.jsx';
 import UsernameContextProvider from '../contexts/UsernameContext.jsx';
 
 function Dashboard() {
@@ -11,6 +12,10 @@ function Dashboard() {
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
+  //Change these to get data from the server when ready, this is a placeholder so that the pie shows up
+  const [dataPoints, setDataPoints] = useState([30, 17, 9, 18, 8, 18]);
+  const [labels, setLabels] = useState(['Housing', 'Food', 'Utilities', 'Savings', 'Transportation', 'Recreation']);
 
   return (
     <div className="container">
@@ -39,6 +44,14 @@ function Dashboard() {
         >
           Payment
         </div>
+        <div
+          role="tab"
+          aria-selected={toggleState === 4}
+          className={toggleState === 4 ? "tabs active-tabs" : "tabs"}
+          onClick={() => toggleTab(4)}
+        >
+          Budget
+        </div>
       </div>
 
       <div className="content-tabs">
@@ -48,7 +61,7 @@ function Dashboard() {
               <UsernameContextProvider>
                 <div><Preview/></div>
               </UsernameContextProvider>
-              <div className='chart'><Piechart/></div>
+              <div className='chart'><PieChart labels={labels} dataPoints={dataPoints} /></div>
             </div>
           </div>
         )}
@@ -68,6 +81,14 @@ function Dashboard() {
             <h2>Payment</h2>
             <hr className='divider'/>
             <p>Placeholder for planning tab</p>
+          </div>
+        )}
+
+        {toggleState === 4 && (
+          <div className="tabs active-tabs">
+            <h2>Budget</h2>
+            <hr className='divider'/>
+            <Budget/>
           </div>
         )}
       </div>
