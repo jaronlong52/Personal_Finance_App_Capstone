@@ -3,7 +3,8 @@ import './Dashboard.css';
 import Income from './Income.jsx';
 import Payment from './payment.jsx';
 import Preview from './preview.jsx';
-import Budget from './budget.jsx'
+import Budget from './budget.jsx';
+import Savings from './savings.jsx';
 import PieChart from './chartjspie.jsx';
 import UsernameContextProvider from '../contexts/UsernameContext.jsx';
 
@@ -53,6 +54,14 @@ function Dashboard() {
         >
           Budget
         </div>
+        <div
+          role="tab"
+          aria-selected={toggleState === 5}
+          className={toggleState === 5 ? "tabs active-tabs" : "tabs"}
+          onClick={() => toggleTab(5)}
+        >
+          Savings Goals
+        </div>
       </div>
 
       <div className="content-tabs">
@@ -92,6 +101,14 @@ function Dashboard() {
             <h2>Budget</h2>
             <hr className='divider'/>
             <Budget/>
+          </div>
+        )}
+
+        {toggleState === 5 && (
+          <div className="tabs active-tabs">
+            <h2>Savings Goals</h2>
+            <hr className='divider'/>
+            <Savings/>
           </div>
         )}
       </div>
