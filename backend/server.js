@@ -9,8 +9,8 @@ app.use(cors())
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
-    database: 'qwikfindb'
+    password: 'Bottlekite90-',
+    database: 'qwik_finance',
 })
 
 app.post('/register', (req, res) => {
