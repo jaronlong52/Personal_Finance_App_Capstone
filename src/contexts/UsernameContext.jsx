@@ -3,10 +3,10 @@ import { useState, createContext } from "react";
 export const UsernameContext = createContext();
 
 const UsernameContextProvider = (props) => {
-    const [variable, setVariable] = useState('testUsername');
+    const [variable, setVariable] = useState('');
 
     return (
-        <UsernameContext.Provider value={{variable}}>
+        <UsernameContext.Provider value={{variable, setVariable}}>
             {props.children}
         </UsernameContext.Provider>
     );
