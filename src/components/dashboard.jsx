@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Dashboard.css';
 import Income from './Income.jsx';
+import Payment from './payment.jsx';
 import Preview from './preview.jsx';
 import Budget from './budget.jsx'
 import PieChart from './chartjspie.jsx';
@@ -42,7 +43,7 @@ function Dashboard() {
           className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(3)}
         >
-          Payment
+          Payments
         </div>
         <div
           role="tab"
@@ -78,9 +79,11 @@ function Dashboard() {
 
         {toggleState === 3 && (
           <div className="tabs active-tabs">
-            <h2>Payment</h2>
+            <h2>Payments</h2>
             <hr className='divider'/>
-            <p>Placeholder for planning tab</p>
+            <UsernameContextProvider>
+              <Payment/>
+            </UsernameContextProvider>
           </div>
         )}
 

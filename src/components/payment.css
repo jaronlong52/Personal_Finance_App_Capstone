@@ -1,40 +1,40 @@
-.income-container {
+.payment-container {
     height: 100%;
     cursor: default;
 }
 
-.income-table {
+.payment-table {
     width: 100%;
     border-collapse: collapse;
     cursor: default;
   }
   
-.income-table th {
-    border: 1px solid #ffffff;
+.payment-table th {
+    border: 1px solid #bdbdbd;
     padding: 8px;
     text-align: left;
     cursor: default;
 }
 
-.income-table-date {
+.payment-table-date {
     width: 250px;
     cursor: default;
 }
 
-.income-table-amount {
+.payment-table-amount {
     width: 250px;
     cursor: default;
 }
 
-.income-table td {
-    border: 1px solid #ffffff;
+.payment-table td {
+    border: 1px solid #bdbdbd;
     padding: 8px;
     text-align: left;
     font-weight: 400;
     cursor: default;
 }
 
-.income-display{
+.payment-display{
     display: flex;
     flex-direction: row;
     gap: 25px;
@@ -42,7 +42,7 @@
     cursor: default;
 }
 
-.income-dropdown-class {
+.payment-dropdown-class {
     width: 100px;
     height: 30px;
     font-size: 15px;
@@ -52,7 +52,7 @@
     cursor: pointer;
 }
 
-.get-records {
+.payment-get-records {
     width: 110px;
     height: 30px;
     font-size: 15px;
@@ -62,14 +62,14 @@
     cursor: pointer;
 }
 
-.income-inputs{
+.payment-inputs{
     display: flex;
     flex-direction: row;
     gap: 25px;
     margin-bottom: 30px;
 }
 
-.income-input{
+.payment-input{
     display: flex;
     align-items: center;
     margin: auto;
@@ -84,7 +84,7 @@
     color: #000000;
 }
 
-.income-comments{
+.payment-comments{
     display: flex;
     align-items: center;
     margin: auto;
@@ -99,7 +99,7 @@
     color: #000000;
 }
 
-.income-submit{
+.payment-submit{
     display: flex;
     justify-content: center;
     align-items: center;
