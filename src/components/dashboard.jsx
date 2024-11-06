@@ -20,7 +20,7 @@ function Dashboard() {
   const [labels, setLabels] = useState(['Housing', 'Food', 'Utilities', 'Savings', 'Transportation', 'Recreation']);
 
   return (
-    <div className="container">
+    <div className="dashboard-container">
       <div className="bloc-tabs">
         <div
           role="tab"
