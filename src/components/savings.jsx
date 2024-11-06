@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './savings.css';
+import ProgressBar from './progressBar';
 import { UsernameContext } from '../contexts/UsernameContext';
 import axios from 'axios';
 
 const Savings = () => {
 
     return (
-        <div></div>
+        <div><ProgressBar/></div>
     )
 }
 
