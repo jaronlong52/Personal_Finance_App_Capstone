@@ -1,43 +1,49 @@
-import React from 'react'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
-import { Pie } from 'react-chartjs-2'
+// PieChart.js
+import React from 'react';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 
-ChartJS.register(
-    ArcElement,
-    Tooltip,
-    Legend
-);
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-const chartjspie = () => {
+const PieChart = ({ labels = [], dataPoints = [] }) => { // Default values to avoid undefined errors
     const data = {
-        labels: ['Housing', 'Food', 'Utilities', 'Savings', 'Transportation', 'Recreation'],
+        labels: labels,
         datasets: [
             {
-                data: [30,17,9,18,8,18],
-                backgroundColor: ['aqua', 'red', 'blue', 'yellow', 'orange', 'purple']
+                data: dataPoints,
+                backgroundColor: [
+                    'aqua', 'red', 'blue', 'yellow', 'orange', 'purple',
+                    ...dataPoints.slice(labels.length).map(() => `hsl(${Math.random() * 360}, 100%, 50%)`)
+                ],
+                borderColor: 'black',
+                borderWidth: 2,
             }
         ]
-    }
+    };
+
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            tooltip: {
+                callbacks: {
+                    label: (tooltipItem) => {
+                        const label = tooltipItem.label || '';
+                        const value = tooltipItem.raw || 0;
+                        return `${label}: ${value}`;
+                    },
+                },
+            },
+        },
+    };
 
     return (
-        <div className='pie'>
-            <div>
-            </div>
-           <div
-           style = {
-            {
-                padding: '50px',
-                width: '100%',
-                
-            }
-           }>
-            <Pie
-            data = {data}>
-
-            </Pie>
-            </div> 
+        <div style={{ padding: '50px', width: '100%' }}>
+            <Pie data={data} options={options} />
         </div>
     );
 };
 
-export default chartjspie;
+export default PieChart;
