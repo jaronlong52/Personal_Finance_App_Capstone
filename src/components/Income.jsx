@@ -75,6 +75,7 @@ const Income = () => {
 
     return (
         <div className="income-container">
+            <div>{variable}</div>
             <div className="income-inputs">
                 <input className="income-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 <input className="income-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>

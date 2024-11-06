@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './login.css'
 import axios from 'axios';
-import UsernameContextProvider, { UsernameContext } from '../../contexts/UsernameContext';
+import { UsernameContext } from '../../contexts/UsernameContext';
 
 import user_icon from '../../assets/user.png'
 import password_icon from '../../assets/padlock.png'
@@ -18,6 +18,9 @@ const Login = () => {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  // set context username so other tabs can use it
+  const { variable, setVariable } = useContext(UsernameContext);
 
   // all usernames in database
   const [usernames, setUsernames] = useState([]);
@@ -129,7 +132,6 @@ const Login = () => {
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
-    const { variable, setVariable } = useContext(UsernameContext);
     setVariable(e.target.value);
   }
 
