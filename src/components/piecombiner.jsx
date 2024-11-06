@@ -4,8 +4,16 @@ import PieChart from './chartjspie';
 import DataManager from './controlpie';
 
 function FullPie() {
-    const [dataPoints, setDataPoints] = useState([30, 17, 9, 18, 8, 18]);
-    const [labels, setLabels] = useState(['Housing', 'Food', 'Utilities', 'Savings', 'Transportation', 'Recreation']);
+    const getBudget = () => {
+        axios.post('http://localhost:8081/income/getBudget', {username: 'testUsername'})
+        .then(res => {
+            console.log(res)
+            setData(res.data);
+        });
+    }
+    
+    const [dataPoints, setDataPoints] = useState(data.map(item => item.amount));
+    const [labels, setLabels] = useState(data.map(item => item.label));
 
     return (
         <div className="combinedChart">
