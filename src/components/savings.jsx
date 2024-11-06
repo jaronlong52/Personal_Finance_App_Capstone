@@ -7,7 +7,11 @@ import axios from 'axios';
 const Savings = () => {
 
     return (
-        <div><ProgressBar/></div>
+        <div>
+            <ProgressBar/>
+            <ProgressBar/>
+            <ProgressBar/>
+        </div>
     )
 }
 
