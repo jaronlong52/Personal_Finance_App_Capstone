@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 import './progressBar.css';
 
-const ProgressBar = () => {
-    const [item, setItem] = useState('New Bike');
-    const [progress, setProgress] = useState(100);
+const ProgressBar = (props) => {
+    const [item, setItem] = useState(props.text);
+    const [progress, setProgress] = useState(0);
     const [amount, setAmount] = useState();
-    const [goal, setGoal] = useState(500);
+    const [goal, setGoal] = useState(props.amount);
 
     const handleContribute = () => {
-        setProgress(amount);
+        if (Number.isNaN(parseFloat(amount))) {
+            console.log("no amount entered");
+        }
+        else {
+            let temp = parseFloat(progress);
+            temp = temp + parseFloat(amount);
+            setProgress(temp.toFixed(2));
+        }
+    }
+
+    const handleReset = () => {
+        setProgress(0);
     }
 
     return (
@@ -29,6 +40,7 @@ const ProgressBar = () => {
             </div>
             <input type="text" placeholder="$" value={amount} onChange={(e) => setAmount(e.target.value)}/>
             <button className="progress-contribute" onClick={handleContribute}>Contribute</button>
+            <button className="progress-reset" onClick={handleReset}>Reset</button>
         </div>
     )
 }
