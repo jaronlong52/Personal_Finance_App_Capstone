@@ -4,7 +4,7 @@ import './progressBar.css';
 const ProgressBar = (props) => {
     const [item, setItem] = useState(props.text);
     const [progress, setProgress] = useState(0);
-    const [amount, setAmount] = useState();
+    const [amount, setAmount] = useState('');
     const [goal, setGoal] = useState(props.amount);
 
     const handleContribute = () => {
@@ -16,6 +16,7 @@ const ProgressBar = (props) => {
             temp = temp + parseFloat(amount);
             setProgress(temp.toFixed(2));
         }
+        setAmount('');
     }
 
     const handleReset = () => {
@@ -41,6 +42,8 @@ const ProgressBar = (props) => {
             <input type="text" placeholder="$" value={amount} onChange={(e) => setAmount(e.target.value)}/>
             <button className="progress-contribute" onClick={handleContribute}>Contribute</button>
             <button className="progress-reset" onClick={handleReset}>Reset</button>
+            <button className="progress-delete" onClick={() => props.deleteGoal(props.index)}>Delete Goal</button>
+            <div>{props.index}</div>
         </div>
     )
 }

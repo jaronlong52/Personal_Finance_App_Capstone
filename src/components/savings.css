@@ -1,0 +1,19 @@
+.savings-new-goal {
+    display: flex;
+    flex-direction: row;
+}
+
+.savings-title-input {
+    padding: 10px;
+    margin: 10px;
+}
+
+.savings-amount-input {
+    padding: 10px;
+    margin: 10px;
+}
+
+.savings-create-goal {
+    padding: 10px;
+    margin: 10px;
+}
