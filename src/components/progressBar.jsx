@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './progressBar.css';
 
 const ProgressBar = (props) => {
@@ -6,22 +6,30 @@ const ProgressBar = (props) => {
     const [progress, setProgress] = useState(0);
     const [amount, setAmount] = useState('');
     const [goal, setGoal] = useState(props.amount);
+    const [status, setStatus] = useState('');
 
     const handleContribute = () => {
-        if (Number.isNaN(parseFloat(amount))) {
-            console.log("no amount entered");
+        if (progress >= goal) {
+            alert("Goal Completed");
+        } else {
+            if (Number.isNaN(parseFloat(amount))) {
+                console.log("no amount entered");
+            }
+            else {
+                let temp = parseFloat(progress);
+                temp = temp + parseFloat(amount);
+                setProgress(temp.toFixed(2));
+            }
+            setAmount('');
         }
-        else {
-            let temp = parseFloat(progress);
-            temp = temp + parseFloat(amount);
-            setProgress(temp.toFixed(2));
-        }
-        setAmount('');
     }
 
     const handleReset = () => {
         setProgress(0);
     }
+
+    const progressPercentage = (progress / goal) * 100;
+    const progWidth = progressPercentage < 100 ? progressPercentage : 100;
 
     return (
         <div className="progress-container">
@@ -31,7 +39,7 @@ const ProgressBar = (props) => {
             </div>
             <div className="progress-bar-label">
                 <div className="progress-bar">
-                    <div className="progress-bar-fill"></div>
+                    <div className="progress-bar-fill" style={{width: `${progWidth}%`}}></div>
                 </div>
                 <div className="progress-ratio-label">
                     <div>{progress}</div>
