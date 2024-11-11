@@ -11,10 +11,6 @@
     padding-right: 50px;
 }
 
-* {
-    box-sizing: border-box;
-}
-
 .progress-bar {
     width: 600px;
     height: 30px;
@@ -57,3 +53,33 @@
     color: black;
 }
 
+.progress-input-container {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.progress-input {
+    border-radius: 3px;
+    border: solid 1px;
+}
+
+.progress-contribute {
+    margin-left: 10px;
+    border-radius: 3px;
+    border: solid 1px;
+}
+
+.progress-reset {
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 3px;
+    border: solid 1px;
+}
+
+.progress-delete {
+    border-radius: 3px;
+    border: solid 1px;
+}

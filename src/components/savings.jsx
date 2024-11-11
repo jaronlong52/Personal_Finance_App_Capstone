@@ -9,10 +9,16 @@ const Savings = (props) => {
     const [goals, setGoals] = useState([]);
     const [goalTitle, setGoalTitle] = useState('');
     const [goalAmount, setGoalAmount] = useState('');
+    const [completedGoals, setCompletedGoals] = useState([]);
 
     const handleDeleteGoal = (targetIndex) => {
         const newGoals = goals.filter(goal => goal.id !== targetIndex);
         setGoals(newGoals);
+    }
+
+    const handleCompleted = (targetIndex) => {
+        const newCompleted = goals.filter(goal => goal.id === targetIndex);
+        setCompletedGoals(...completedGoals, newCompleted);
     }
 
     const handleCreateGoal = () => {
@@ -26,6 +32,7 @@ const Savings = (props) => {
             title: goalTitle,
             amount: parseFloat(goalAmount),
             deleteGoal: {handleDeleteGoal},
+            moveToComplete: {handleCompleted},
         }
 
         setGoals([...goals, newGoal]);
@@ -40,15 +47,32 @@ const Savings = (props) => {
                 <input className='savings-amount-input' type='float' value={goalAmount} placeholder='$' onChange={e => setGoalAmount(e.target.value)}/>
                 <button className='savings-create-goal' onClick={handleCreateGoal}>Create New Goal</button>
             </div>
-            {goals.map(goal => (
-                <ProgressBar
-                    key={goal.id} // Use unique id as the key
-                    id={goal.id} // Pass the unique id to ProgressBar
-                    text={goal.title}
-                    amount={goal.amount}
-                    deleteGoal={handleDeleteGoal} // Pass delete handler
-                />
-            ))}
+            <div className="savings-inProgress-container">
+                <div className="savings-inProgress-label">In Progress</div>
+                {goals.map(goal => (
+                    <ProgressBar
+                        key={goal.id} // Use unique id as the key
+                        id={goal.id} // Pass the unique id to ProgressBar
+                        text={goal.title}
+                        amount={goal.amount}
+                        deleteGoal={handleDeleteGoal} // Pass delete handler
+                        moveToComplete={handleCompleted}
+                    />
+                ))}
+            </div>
+            <div className="savings-completed-container">
+                <div className="savings-completed-label">Completed</div>
+                {completedGoals.map(goal => (
+                    <ProgressBar
+                        key={goal.id} // Use unique id as the key
+                        id={goal.id} // Pass the unique id to ProgressBar
+                        text={goal.title}
+                        amount={goal.amount}
+                        deleteGoal={handleDeleteGoal} // Pass delete handler
+                        moveToComplete={handleCompleted}
+                    />
+                ))}
+            </div>
         </div>
     )
 }

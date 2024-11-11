@@ -28,6 +28,12 @@ const ProgressBar = (props) => {
         setProgress(0);
     }
 
+    useEffect(() => {
+        if (progress >= goal) {
+            props.moveToComplete(props.id);
+        }
+      }, [progress]);
+
     const progressPercentage = (progress / goal) * 100;
     const progWidth = progressPercentage < 100 ? progressPercentage : 100;
 
@@ -47,10 +53,12 @@ const ProgressBar = (props) => {
                     <div>{goal}</div>
                 </div>
             </div>
-            <input type="text" placeholder="$" value={amount} onChange={(e) => setAmount(e.target.value)}/>
-            <button className="progress-contribute" onClick={handleContribute}>Contribute</button>
-            <button className="progress-reset" onClick={handleReset}>Reset</button>
-            <button className="progress-delete" onClick={() => props.deleteGoal(props.id)}>Delete Goal</button>
+            <div className="progress-input-container">
+                <input className="progress-input" type="text" placeholder="$" value={amount} onChange={(e) => setAmount(e.target.value)}/>
+                <button className="progress-contribute" onClick={handleContribute}>Contribute</button>
+                <button className="progress-reset" onClick={handleReset}>Reset</button>
+                <button className="progress-delete" onClick={() => props.deleteGoal(props.id)}>Delete Goal</button>
+            </div>
         </div>
     )
 }
