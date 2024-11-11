@@ -11,7 +11,7 @@ const Savings = (props) => {
     const [goalAmount, setGoalAmount] = useState('');
 
     const handleDeleteGoal = (targetIndex) => {
-        const newGoals = goals.filter(goal => goal.index !== targetIndex);
+        const newGoals = goals.filter(goal => goal.id !== targetIndex);
         setGoals(newGoals);
     }
 
@@ -21,11 +21,14 @@ const Savings = (props) => {
             return;
         }
 
-        setGoals([...goals, <ProgressBar key={Date.now()}
-                                         index={goals.length} 
-                                         text={goalTitle} 
-                                         amount={parseFloat(goalAmount)} 
-                                         deleteGoal={handleDeleteGoal}/>]);
+        const newGoal = {
+            id: Date.now(),
+            title: goalTitle,
+            amount: parseFloat(goalAmount),
+            deleteGoal: {handleDeleteGoal},
+        }
+
+        setGoals([...goals, newGoal]);
         setGoalTitle('');
         setGoalAmount('');
     }
@@ -37,7 +40,15 @@ const Savings = (props) => {
                 <input className='savings-amount-input' type='float' value={goalAmount} placeholder='$' onChange={e => setGoalAmount(e.target.value)}/>
                 <button className='savings-create-goal' onClick={handleCreateGoal}>Create New Goal</button>
             </div>
-            {goals}
+            {goals.map(goal => (
+                <ProgressBar
+                    key={goal.id} // Use unique id as the key
+                    id={goal.id} // Pass the unique id to ProgressBar
+                    text={goal.title}
+                    amount={goal.amount}
+                    deleteGoal={handleDeleteGoal} // Pass delete handler
+                />
+            ))}
         </div>
     )
 }

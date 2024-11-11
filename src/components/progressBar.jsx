@@ -42,8 +42,7 @@ const ProgressBar = (props) => {
             <input type="text" placeholder="$" value={amount} onChange={(e) => setAmount(e.target.value)}/>
             <button className="progress-contribute" onClick={handleContribute}>Contribute</button>
             <button className="progress-reset" onClick={handleReset}>Reset</button>
-            <button className="progress-delete" onClick={() => props.deleteGoal(props.index)}>Delete Goal</button>
-            <div>{props.index}</div>
+            <button className="progress-delete" onClick={() => props.deleteGoal(props.id)}>Delete Goal</button>
         </div>
     )
 }
