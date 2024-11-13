@@ -100,7 +100,7 @@ app.post ('/budget/setBudget', (req, res) => {
     );
 });
 
-app.post ('/budget/setBudget', (req, res) => {
+app.post ('/budget/delBudget', (req, res) => {
     const username = req.body.username;
     const label = req.body.labels;
     const dataPoint = req.body.dataPoints;
