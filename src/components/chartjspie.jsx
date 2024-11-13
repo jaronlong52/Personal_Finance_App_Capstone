@@ -12,7 +12,8 @@ const PieChart = ({ labels = [], dataPoints = [] }) => { // Default values to av
             {
                 data: dataPoints,
                 backgroundColor: [
-                    'aqua', 'red', 'blue', 'yellow', 'orange', 'purple',
+                    'aqua', 'red', 'blue', 'yellow', 'orange', 'purple', 'cadetblue',
+                     'chartreuse', 'coral', 'darkgoldenrod', 'darkkhaki', 'darkseagreen',
                     ...dataPoints.slice(labels.length).map(() => `hsl(${Math.random() * 360}, 100%, 50%)`)
                 ],
                 borderColor: 'black',
@@ -40,7 +41,7 @@ const PieChart = ({ labels = [], dataPoints = [] }) => { // Default values to av
     };
 
     return (
-        <div style={{ padding: '50px', width: '100%' }}>
+        <div className='pieChart' style={{paddingLeft: '200px', paddingRight: '100px', width: '500px' }}>
             <Pie data={data} options={options} />
         </div>
     );
