@@ -93,7 +93,7 @@ app.post ('/budget/setBudget', (req, res) => {
     const labels = req.body.labels;
     const dataPoints = req.body.dataPoints;
     db.query('INSERT INTO budget (username, labels, dataPoints) VALUES (?,?,?)', 
-        [username, labels, dataPoints], 
+        [username, labels, dataPoints],
         (err, result) => {
             console.log(err);
         }
@@ -110,6 +110,42 @@ app.post ('/budget/delBudget', (req, res) => {
             console.log(err);
         }
     );
+ });
+
+app.post('/savings/addGoal', (req, res) => {
+
+    const username = req.body.username;
+    const dateID = req.body.dateID;
+    const title = req.body.title;
+    const amount = req.body.amount;
+    const remaining = req.body.remaining;
+    const percentage = req.body.percentage;
+    const state = 'in progress';
+
+    db.query('INSERT INTO savings (username, dateID, title, amount, remaining, percentage, state) VALUES (?,?,?,?,?,?,?)', 
+        [username, dateID, title, amount, remaining, percentage, state],
+        (err, result) => {
+            console.log(err);
+        }
+    );
+});
+
+app.post('/savings/getGoals', (req, res) => {
+    const username = req.body.username;
+    const state = 'in progress';
+    db.query('SELECT * FROM savings WHERE username = ? and state = ?', [username, state], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
+app.post('/savings/getCompleted', (req, res) => {
+    const username = req.body.username;
+    const state = 'completed';
+    db.query('SELECT * FROM savings WHERE username = ? and state = ?', [username, state], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
 });
 
 app.listen(8081, () => {
