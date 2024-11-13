@@ -1,10 +1,25 @@
 // DataManager.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
     const [newLabel, setNewLabel] = useState('');
     const [newData, setNewData] = useState('');
+    const tData = useState([]);
 
+    const addPoint = (nwLabel, nwPoint) => {
+        axios.post('http://localhost:8081/budget/setBudget', {username: 'testUsername', labels: nwLabel, dataPoints: nwPoint})
+        .then(res => {
+            tData(res.data)
+        })
+    }
+
+    const deletePoint = (labelToRm, pointToRm) => {
+        axios.post('http://localhost:8081/budget/setBudget', {username: 'testUsername', label: labelToRm, dataPoint: pointToRm})
+        .then(res => {
+            tData(res.data)
+        })
+    }
     // Function to add a new data point to the pie chart
     const addDataPoint = () => {
         // Trim whitespace and check if the new label is unique
@@ -15,6 +30,7 @@ const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
                 // Update the labels and dataPoints states
                 setLabels((prevLabels) => [...prevLabels, newLabel.trim()]);
                 setDataPoints((prevDataPoints) => [...prevDataPoints, numericValue]);
+                addPoint(newLabel, numericValue);
                 // Reset input fields
                 setNewLabel('');
                 setNewData('');
@@ -27,6 +43,7 @@ const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
         const newLabels = labels.filter((_, i) => i !== index);
         const newDataPoints = dataPoints.filter((_, i) => i !== index);
         // Update the states with new values
+        deletePoint(labels.filter((_, i) => i !== index), dataPoints.filter((_, i) => i !== index))
         setLabels(newLabels);
         setDataPoints(newDataPoints);
     };
