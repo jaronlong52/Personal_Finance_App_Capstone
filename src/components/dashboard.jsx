@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import Income from './Income.jsx';
 import Payment from './payment.jsx';
@@ -7,6 +7,7 @@ import Budget from './budget.jsx';
 import Savings from './savings.jsx';
 import PieChart from './chartjspie.jsx';
 import UsernameContextProvider from '../contexts/UsernameContext.jsx';
+import axios from 'axios';
 
 function Dashboard() {
   const [toggleState, setToggleState] = useState(1);
@@ -15,9 +16,39 @@ function Dashboard() {
     setToggleState(index);
   };
 
-  //Change these to get data from the server when ready, this is a placeholder so that the pie shows up
-  const [dataPoints, setDataPoints] = useState([30, 17, 9, 18, 8, 18]);
-  const [labels, setLabels] = useState(['Housing', 'Food', 'Utilities', 'Savings', 'Transportation', 'Recreation']);
+  //pie loader
+  const [data, setData] = useState([]);
+
+    const getBudget = () => {
+        axios.post('http://localhost:8081/budget/getBudget', {username: 'testUsername'})
+        .then(res => {
+            setData(res.data);
+            console.log(res);
+        });
+    }
+
+    const amounts = data.map(item => item.amount);
+    const allLabels = data.map(item => item.label);
+
+    useEffect(() => {
+        getBudget();
+      }, []);
+
+    useEffect(() => {
+        // This effect will run every time the `data` state changes
+        if (data.length > 0) {
+            const amounts = data.map(item => item.amount); // Extract amounts
+            const allLabels = data.map(item => item.label); // Extract labels
+
+            // Update dataPoints and labels state with new values
+            setDataPoints(amounts);
+            setLabels(allLabels);
+        }
+    }, [data]); // Runs when `data` changes
+    
+    const [dataPoints, setDataPoints] = useState(amounts);
+    const [labels, setLabels] = useState(allLabels);
+  //pie loader
 
   return (
     <div className="dashboard-container">

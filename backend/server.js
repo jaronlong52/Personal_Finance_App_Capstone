@@ -80,13 +80,37 @@ app.post('/income/inputRecord', (req, res) => {
     );
 });
 
-app.post('/income/getBudget', (req, res) => {
+app.post('/budget/getBudget', (req, res) => {
     const username = req.body.username;
     db.query('SELECT * FROM budget WHERE username = ?', [username], (err, data) => {
         if(err) return res.json(err);
         return res.json(data);
     });
 });
+
+app.post ('/budget/setBudget', (req, res) => {
+    const username = req.body.username;
+    const labels = req.body.labels;
+    const dataPoints = req.body.dataPoints;
+    db.query('INSERT INTO budget (username, labels, dataPoints) VALUES (?,?,?)', 
+        [username, labels, dataPoints],
+        (err, result) => {
+            console.log(err);
+        }
+    );
+});
+
+app.post ('/budget/delBudget', (req, res) => {
+    const username = req.body.username;
+    const label = req.body.labels;
+    const dataPoint = req.body.dataPoints;
+    db.query('DELETE FROM budget WHERE username = ? AND label = ? AND dataPoint = ?', 
+        [username, label, dataPoint], 
+        (err, result) => {
+            console.log(err);
+        }
+    );
+ });
 
 app.post('/savings/addGoal', (req, res) => {
 
