@@ -17,3 +17,59 @@
     padding: 10px;
     margin: 10px;
 }
+
+.savings-inProgress-label {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.savings-ratio-label {
+    display: flex;
+    flex-direction: row;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+.savings-completed-label {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.savings-completed-item {
+    width: 800px;
+    border: solid;
+    border-radius: 10px;
+    border-color: rgb(119, 119, 119);
+    border-width: 2px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 10px;
+}
+
+.savings-completed-item-label {
+    display: flex;
+    flex-direction: row;
+}
+
+.savings-completed-title {
+    margin-right: 100px;
+}
+
+.savings-progress-bar {
+    width: 600px;
+    height: 30px;
+    border: solid;
+    border-radius: 10px;
+    background-color: #20690a;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.savings-progress-item {
+    display: flex;
+    flex-direction: row;
+}

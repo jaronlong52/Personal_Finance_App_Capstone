@@ -41,7 +41,8 @@ const ProgressBar = (props) => {
         <div className="progress-container">
             <div className="progress-label">
                 <div className="progress-item-label">{item}</div>
-                <div className="progress-goal-label">Goal: {goal}</div>
+                <div className="progress-goal-label">Goal: ${goal}</div>
+                <div className="progress-remaining-label">Remaining: ${goal-progress}</div>
             </div>
             <div className="progress-bar-label">
                 <div className="progress-bar">
