@@ -15,7 +15,7 @@ const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
     }
 
     const deletePoint = (labelToRm, pointToRm) => {
-        axios.post('http://localhost:8081/budget/setBudget', {username: 'testUsername', label: labelToRm, dataPoint: pointToRm})
+        axios.post('http://localhost:8081/budget/delBudget', {username: 'testUsername', label: labelToRm, dataPoint: pointToRm})
         .then(res => {
             tData(res.data)
         })
