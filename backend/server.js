@@ -158,6 +158,15 @@ app.post('/savings/markCompleted', (req, res) => {
     });
 });
 
+app.post('/savings/deleteGoal', (req, res) => {
+    const username = req.body.username;
+    const id = req.body.dateID;
+    db.query('DELETE FROM savings WHERE username = ? and dateID = ?', [username, id], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
 app.post('/progress/addContribute', (req, res) => {
     const username = req.body.username;
     const progress = req.body.progress;

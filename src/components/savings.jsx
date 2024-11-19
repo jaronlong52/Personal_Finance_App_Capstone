@@ -14,6 +14,7 @@ const Savings = (props) => {
     const handleDeleteGoal = (targetIndex) => {
         const newGoals = goals.filter(goal => goal.id !== targetIndex);
         setGoals(newGoals);
+        deleteGoal(targetIndex);
     }
 
     const handleCompleted = (targetIndex) => {
@@ -109,6 +110,13 @@ const Savings = (props) => {
 
     const markCompleted = (targetIndex) => {
         axios.post('http://localhost:8081/savings/markCompleted', {username: 'testUsername', dateID: targetIndex})
+        .then(res => {
+          console.log(res);
+        });
+    }
+
+    const deleteGoal = (targetIndex) => {
+        axios.post('http://localhost:8081/savings/deleteGoal', {username: 'testUsername', dateID: targetIndex})
         .then(res => {
           console.log(res);
         });
