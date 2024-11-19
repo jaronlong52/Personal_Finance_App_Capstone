@@ -37,6 +37,10 @@ const ProgressBar = (props) => {
 
     const handleReset = () => {
         setProgress(0);
+        axios.post('http://localhost:8081/progress/reset', {username: 'testUsername', dateID: props.id})
+        .then(res => {
+          console.log(res);
+        });
     }
 
     useEffect(() => {

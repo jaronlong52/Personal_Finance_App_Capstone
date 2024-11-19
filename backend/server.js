@@ -169,6 +169,17 @@ app.post('/progress/addContribute', (req, res) => {
     });
 });
 
+app.post('/progress/reset', (req, res) => {
+    const username = req.body.username;
+    const id = req.body.dateID;
+    const progress = 0;
+    const percent = 0;
+    db.query('UPDATE savings SET progress = ?, percentage = ? WHERE username = ? and dateID = ?', [progress, percent, username, id], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
 app.listen(8081, () => {
     console.log("listening");
 })
