@@ -35,6 +35,7 @@ const Savings = (props) => {
             id: dateID,
             title: goalTitle,
             amount: parseFloat(goalAmount),
+            progress: 0,
             deleteGoal: {handleDeleteGoal},
             moveToComplete: {handleCompleted},
         }
@@ -46,7 +47,7 @@ const Savings = (props) => {
     }
 
     const addGoal = (dateID) => {
-        axios.post('http://localhost:8081/savings/addGoal', {username: 'testUsername', dateID: dateID, title: goalTitle, amount: goalAmount, remaining: goalAmount, percentage: 0})
+        axios.post('http://localhost:8081/savings/addGoal', {username: 'testUsername', dateID: dateID, title: goalTitle, amount: goalAmount, progress: goalAmount, percentage: 0})
         .then(res => {
           console.log(res);
         });
@@ -62,6 +63,7 @@ const Savings = (props) => {
                 id: goal.dateID,
                 title: goal.title,
                 amount: parseFloat(goal.amount),
+                progress: parseFloat(goal.progress),
                 deleteGoal: {handleDeleteGoal},
                 moveToComplete: {handleCompleted},
             }));
@@ -120,11 +122,12 @@ const Savings = (props) => {
                 <h2 className="savings-inProgress-label">In Progress</h2>
                 {goals.map(goal => (
                     <ProgressBar
-                        key={goal.id} // Use unique id as the key
-                        id={goal.id} // Pass the unique id to ProgressBar
+                        key={goal.id}
+                        id={goal.id}
                         text={goal.title}
                         amount={goal.amount}
-                        deleteGoal={handleDeleteGoal} // Pass delete handler
+                        progress={goal.progress}
+                        deleteGoal={handleDeleteGoal}
                         moveToComplete={handleCompleted}
                     />
                 ))}

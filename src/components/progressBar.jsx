@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import './progressBar.css';
+import axios from "axios";
 
 const ProgressBar = (props) => {
     const [item, setItem] = useState(props.text);
-    const [progress, setProgress] = useState(0);
+    const [progress, setProgress] = useState(props.progress);
     const [amount, setAmount] = useState('');
     const [goal, setGoal] = useState(props.amount);
     const [status, setStatus] = useState('');
@@ -19,9 +20,19 @@ const ProgressBar = (props) => {
                 let temp = parseFloat(progress);
                 temp = temp + parseFloat(amount);
                 setProgress(temp.toFixed(2));
+                let progressPercentage = (temp.toFixed(2) / goal) * 100;
+                let progWidth = progressPercentage < 100 ? progressPercentage : 100;
+                addContribute(temp.toFixed(2), progWidth);
             }
             setAmount('');
         }
+    }
+
+    const addContribute = (progress, percent) => {
+        axios.post('http://localhost:8081/progress/addContribute', {username: 'testUsername', progress: progress, percent: percent, dateID: props.id})
+        .then(res => {
+          console.log(res);
+        });
     }
 
     const handleReset = () => {
