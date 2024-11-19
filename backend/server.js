@@ -148,6 +148,16 @@ app.post('/savings/getCompleted', (req, res) => {
     });
 });
 
+app.post('/savings/markCompleted', (req, res) => {
+    const username = req.body.username;
+    const id = req.body.dateID;
+    const state = 'completed';
+    db.query('UPDATE savings SET state = ? WHERE username = ? and dateID = ?', [state, username, id], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
 app.post('/progress/addContribute', (req, res) => {
     const username = req.body.username;
     const progress = req.body.progress;

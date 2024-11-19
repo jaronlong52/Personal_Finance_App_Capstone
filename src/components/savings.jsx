@@ -21,6 +21,7 @@ const Savings = (props) => {
         const notCompleted = goals.filter(goal => goal.id !== targetIndex);
         setGoals(notCompleted);
         setCompletedGoals(prevCompletedGoals => [...prevCompletedGoals, ...newCompleted]);
+        markCompleted(targetIndex);
     }
 
     const handleCreateGoal = () => {
@@ -103,6 +104,13 @@ const Savings = (props) => {
                 });
                 return updatedGoals;
             });
+        });
+    }
+
+    const markCompleted = (targetIndex) => {
+        axios.post('http://localhost:8081/savings/markCompleted', {username: 'testUsername', dateID: targetIndex})
+        .then(res => {
+          console.log(res);
         });
     }
 
