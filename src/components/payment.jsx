@@ -4,7 +4,7 @@ import { UsernameContext } from '../contexts/UsernameContext';
 import axios from 'axios';
 
 const Payment = () => {
-    const { variable, setVariable } = useContext(UsernameContext);
+    const { variable } = useContext(UsernameContext);
     const [data, setData] = useState([]);
 
     const currentDate = new Date();
@@ -75,6 +75,7 @@ const Payment = () => {
 
     return (
         <div className="payment-container">
+            <div>{variable}</div>
             <div className="payment-inputs">
                 <input className="payment-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 <input className="payment-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>

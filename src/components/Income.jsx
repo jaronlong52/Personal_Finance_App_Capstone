@@ -4,7 +4,7 @@ import { UsernameContext } from '../contexts/UsernameContext';
 import axios from 'axios';
 
 const Income = () => {
-    const { variable, setVariable } = useContext(UsernameContext);
+    const { variable } = useContext(UsernameContext);
     const [data, setData] = useState([]);
 
     const currentDate = new Date();

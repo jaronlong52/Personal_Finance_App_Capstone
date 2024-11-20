@@ -1,10 +1,13 @@
 import Page_routes from './page_routes';
 import React from 'react'
+import UsernameContextProvider from './contexts/UsernameContext';
 
 const App = () => {
   return (
     <div>
-      <Page_routes/>
+      <UsernameContextProvider>
+        <Page_routes/>
+      </UsernameContextProvider>
     </div>
   );
 }
