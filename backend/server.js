@@ -90,10 +90,10 @@ app.post('/budget/getBudget', (req, res) => {
 
 app.post ('/budget/setBudget', (req, res) => {
     const username = req.body.username;
-    const labels = req.body.labels;
-    const dataPoints = req.body.dataPoints;
-    db.query('INSERT INTO budget (username, labels, dataPoints) VALUES (?,?,?)', 
-        [username, labels, dataPoints],
+    const label = req.body.labels;
+    const amount = req.body.dataPoints;
+    db.query('INSERT INTO budget (username, label, amount) VALUES (?,?,?)', 
+        [username, label, amount],
         (err, result) => {
             console.log(err);
         }
@@ -102,9 +102,9 @@ app.post ('/budget/setBudget', (req, res) => {
 
 app.post ('/budget/delBudget', (req, res) => {
     const username = req.body.username;
-    const label = req.body.labels;
-    const dataPoint = req.body.dataPoints;
-    db.query('DELETE FROM budget WHERE username = ? AND label = ? AND dataPoint = ?', 
+    const label = req.body.label;
+    const dataPoint = req.body.dataPoint;
+    db.query('DELETE FROM budget WHERE username = ? AND label = ? AND amount = ?', 
         [username, label, dataPoint], 
         (err, result) => {
             console.log(err);
