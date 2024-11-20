@@ -8,7 +8,7 @@ const Page_routes = () => {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<UsernameContextProvider><Login/></UsernameContextProvider>}></Route>
+          <Route path="/" element={<Login/>}></Route>
           <Route path="/dashboard" element={<Dashboard/>}></Route>
         </Routes>
       </BrowserRouter>

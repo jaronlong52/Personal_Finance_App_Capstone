@@ -118,12 +118,12 @@ app.post('/savings/addGoal', (req, res) => {
     const dateID = req.body.dateID;
     const title = req.body.title;
     const amount = req.body.amount;
-    const remaining = req.body.remaining;
+    const progress = req.body.progress;
     const percentage = req.body.percentage;
     const state = 'in progress';
 
-    db.query('INSERT INTO savings (username, dateID, title, amount, remaining, percentage, state) VALUES (?,?,?,?,?,?,?)', 
-        [username, dateID, title, amount, remaining, percentage, state],
+    db.query('INSERT INTO savings (username, dateID, title, amount, progress, percentage, state) VALUES (?,?,?,?,?,?,?)', 
+        [username, dateID, title, amount, progress, percentage, state],
         (err, result) => {
             console.log(err);
         }
@@ -143,6 +143,47 @@ app.post('/savings/getCompleted', (req, res) => {
     const username = req.body.username;
     const state = 'completed';
     db.query('SELECT * FROM savings WHERE username = ? and state = ?', [username, state], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
+app.post('/savings/markCompleted', (req, res) => {
+    const username = req.body.username;
+    const id = req.body.dateID;
+    const state = 'completed';
+    db.query('UPDATE savings SET state = ? WHERE username = ? and dateID = ?', [state, username, id], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
+app.post('/savings/deleteGoal', (req, res) => {
+    const username = req.body.username;
+    const id = req.body.dateID;
+    db.query('DELETE FROM savings WHERE username = ? and dateID = ?', [username, id], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
+app.post('/progress/addContribute', (req, res) => {
+    const username = req.body.username;
+    const progress = req.body.progress;
+    const percent = req.body.percent;
+    const id = req.body.dateID;
+    db.query('UPDATE savings SET progress = ?, percentage = ? WHERE username = ? and dateID = ?', [progress, percent, username, id], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
+app.post('/progress/reset', (req, res) => {
+    const username = req.body.username;
+    const id = req.body.dateID;
+    const progress = 0;
+    const percent = 0;
+    db.query('UPDATE savings SET progress = ?, percentage = ? WHERE username = ? and dateID = ?', [progress, percent, username, id], (err, data) => {
         if(err) return res.json(err);
         return res.json(data);
     });

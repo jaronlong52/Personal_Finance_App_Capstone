@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Dashboard.css';
 import Income from './Income.jsx';
 import Payment from './payment.jsx';
@@ -7,10 +7,13 @@ import Budget from './budget.jsx';
 import Savings from './savings.jsx';
 import PieChart from './chartjspie.jsx';
 import UsernameContextProvider from '../contexts/UsernameContext.jsx';
+import { UsernameContext } from '../contexts/UsernameContext.jsx';
 import axios from 'axios';
 
 function Dashboard() {
   const [toggleState, setToggleState] = useState(1);
+
+  const { variable } = useContext(UsernameContext);
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -20,7 +23,7 @@ function Dashboard() {
   const [data, setData] = useState([]);
 
     const getBudget = () => {
-        axios.post('http://localhost:8081/budget/getBudget', {username: 'testUsername'})
+        axios.post('http://localhost:8081/budget/getBudget', {username: variable})
         .then(res => {
             setData(res.data);
             console.log(res);
@@ -99,9 +102,7 @@ function Dashboard() {
         {toggleState === 1 && (
           <div className="tabs active-tabs">
             <div className='fullpre'>
-              <UsernameContextProvider>
-                <div><Preview/></div>
-              </UsernameContextProvider>
+              <div><Preview/></div>
               <div className='chart'><PieChart labels={labels} dataPoints={dataPoints} /></div>
             </div>
           </div>
@@ -111,9 +112,7 @@ function Dashboard() {
           <div className="tabs active-tabs">
             <h2>Income</h2>
             <hr className='divider'/>
-            <UsernameContextProvider>
-              <Income/>
-            </UsernameContextProvider>
+            <Income/>
           </div>
         )}
 
@@ -121,9 +120,7 @@ function Dashboard() {
           <div className="tabs active-tabs">
             <h2>Payments</h2>
             <hr className='divider'/>
-            <UsernameContextProvider>
-              <Payment/>
-            </UsernameContextProvider>
+            <Payment/>
           </div>
         )}
 

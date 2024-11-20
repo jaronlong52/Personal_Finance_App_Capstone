@@ -1,14 +1,17 @@
 import './piecombiner.css'
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PieChart from './chartjspie';
 import DataManager from './controlpie';
 import axios from 'axios';
+import { UsernameContext } from '../contexts/UsernameContext';
 
 function FullPie() {
     const [data, setData] = useState([]);
 
+    const {variable} = useContext(UsernameContext);
+
     const getBudget = () => {
-        axios.post('http://localhost:8081/budget/getBudget', {username: 'testUsername'})
+        axios.post('http://localhost:8081/budget/getBudget', {username: variable})
         .then(res => {
             setData(res.data);
             console.log(res);

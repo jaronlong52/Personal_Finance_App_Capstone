@@ -10,10 +10,14 @@ const Savings = (props) => {
     const [goalTitle, setGoalTitle] = useState('');
     const [goalAmount, setGoalAmount] = useState('');
     const [completedGoals, setCompletedGoals] = useState([]);
+    const [noGoals, setNoGoals] = useState('');
+
+    const { variable } = useContext(UsernameContext);
 
     const handleDeleteGoal = (targetIndex) => {
         const newGoals = goals.filter(goal => goal.id !== targetIndex);
         setGoals(newGoals);
+        deleteGoal(targetIndex);
     }
 
     const handleCompleted = (targetIndex) => {
@@ -21,6 +25,7 @@ const Savings = (props) => {
         const notCompleted = goals.filter(goal => goal.id !== targetIndex);
         setGoals(notCompleted);
         setCompletedGoals(prevCompletedGoals => [...prevCompletedGoals, ...newCompleted]);
+        markCompleted(targetIndex);
     }
 
     const handleCreateGoal = () => {
@@ -35,6 +40,7 @@ const Savings = (props) => {
             id: dateID,
             title: goalTitle,
             amount: parseFloat(goalAmount),
+            progress: 0,
             deleteGoal: {handleDeleteGoal},
             moveToComplete: {handleCompleted},
         }
@@ -46,14 +52,14 @@ const Savings = (props) => {
     }
 
     const addGoal = (dateID) => {
-        axios.post('http://localhost:8081/savings/addGoal', {username: 'testUsername', dateID: dateID, title: goalTitle, amount: goalAmount, remaining: goalAmount, percentage: 0})
+        axios.post('http://localhost:8081/savings/addGoal', {username: variable, dateID: dateID, title: goalTitle, amount: goalAmount, progress: 0, percentage: 0})
         .then(res => {
           console.log(res);
         });
     }
 
     const getGoals = () => {
-        axios.post('http://localhost:8081/savings/getGoals', {username: 'testUsername'})
+        axios.post('http://localhost:8081/savings/getGoals', {username: variable})
         .then(res => {
             console.log(res)
             const data = res.data;
@@ -62,6 +68,7 @@ const Savings = (props) => {
                 id: goal.dateID,
                 title: goal.title,
                 amount: parseFloat(goal.amount),
+                progress: parseFloat(goal.progress),
                 deleteGoal: {handleDeleteGoal},
                 moveToComplete: {handleCompleted},
             }));
@@ -79,7 +86,7 @@ const Savings = (props) => {
     }
 
     const getCompleted = () => {
-        axios.post('http://localhost:8081/savings/getCompleted', {username: 'testUsername'})
+        axios.post('http://localhost:8081/savings/getCompleted', {username: variable})
         .then(res => {
             console.log(res)
             const data = res.data;
@@ -104,9 +111,29 @@ const Savings = (props) => {
         });
     }
 
+    const markCompleted = (targetIndex) => {
+        axios.post('http://localhost:8081/savings/markCompleted', {username: variable, dateID: targetIndex})
+        .then(res => {
+          console.log(res);
+        });
+    }
+
+    const deleteGoal = (targetIndex) => {
+        axios.post('http://localhost:8081/savings/deleteGoal', {username: variable, dateID: targetIndex})
+        .then(res => {
+          console.log(res);
+        });
+    }
+
     useEffect(() => {
         getGoals();
         getCompleted();
+        if (goals.length === 0) {
+            setNoGoals('You currently have no savings goals.');
+        }
+        else {
+            setNoGoals('');
+        }
       }, []);
 
     return (
@@ -118,13 +145,15 @@ const Savings = (props) => {
             </div>
             <div className="savings-inProgress-container">
                 <h2 className="savings-inProgress-label">In Progress</h2>
+                <div>{noGoals}</div>
                 {goals.map(goal => (
                     <ProgressBar
-                        key={goal.id} // Use unique id as the key
-                        id={goal.id} // Pass the unique id to ProgressBar
+                        key={goal.id}
+                        id={goal.id}
                         text={goal.title}
                         amount={goal.amount}
-                        deleteGoal={handleDeleteGoal} // Pass delete handler
+                        progress={goal.progress}
+                        deleteGoal={handleDeleteGoal}
                         moveToComplete={handleCompleted}
                     />
                 ))}

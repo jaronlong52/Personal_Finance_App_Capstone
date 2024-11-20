@@ -4,7 +4,7 @@ import { UsernameContext } from '../contexts/UsernameContext';
 import axios from 'axios';
 
 const Income = () => {
-    const { variable, setVariable } = useContext(UsernameContext);
+    const { variable } = useContext(UsernameContext);
     const [data, setData] = useState([]);
 
     const currentDate = new Date();
@@ -75,7 +75,6 @@ const Income = () => {
 
     return (
         <div className="income-container">
-            <div>{variable}</div>
             <div className="income-inputs">
                 <input className="income-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 <input className="income-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>

@@ -1,11 +1,15 @@
 // PieChart.js
-import React from 'react';
+import React, { useContext } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import { UsernameContext } from '../contexts/UsernameContext';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = ({ labels = [], dataPoints = [] }) => { // Default values to avoid undefined errors
+
+    const { variable } = useContext(UsernameContext);
+
     const data = {
         labels: labels,
         datasets: [
