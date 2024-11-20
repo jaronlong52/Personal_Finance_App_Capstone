@@ -18,6 +18,11 @@ function Preview() {
     const totalPayment = paymentData.reduce((acc, item) => acc + item.amount, 0); //  **get from db**
     const currentBalance = totalIncome - totalPayment;
 
+    //Hardcoded for now but must use the db to get info 
+    const percent1 = 20
+    const percent2 = 30.54
+    const percent3 = 100
+
 
     const pieData = {
       labels: paymentData.map(item => item.source),
@@ -39,22 +44,9 @@ function Preview() {
             </div>
             <div className="payment-container">
                 <h1>Savings Overview</h1>
-                <table className="income-table">
-                    <thead>
-                        <tr>
-                            <th>Source</th>
-                            <th>Amount ($)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {paymentData.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.source}</td>
-                                <td>{item.amount}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <h2>Goal 1: {percent1}% Complete</h2>
+                <h2>Goal 2: {percent2}% Complete</h2>
+                <h2>Goal 3: {percent3}% Complete</h2>
             </div>
         </div>
     );
