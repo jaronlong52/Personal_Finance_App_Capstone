@@ -10,6 +10,9 @@ const Savings = (props) => {
     const [goalTitle, setGoalTitle] = useState('');
     const [goalAmount, setGoalAmount] = useState('');
     const [completedGoals, setCompletedGoals] = useState([]);
+    const [noGoals, setNoGoals] = useState('');
+
+    const { variable } = useContext(UsernameContext);
 
     const handleDeleteGoal = (targetIndex) => {
         const newGoals = goals.filter(goal => goal.id !== targetIndex);
@@ -49,14 +52,14 @@ const Savings = (props) => {
     }
 
     const addGoal = (dateID) => {
-        axios.post('http://localhost:8081/savings/addGoal', {username: 'testUsername', dateID: dateID, title: goalTitle, amount: goalAmount, progress: goalAmount, percentage: 0})
+        axios.post('http://localhost:8081/savings/addGoal', {username: variable, dateID: dateID, title: goalTitle, amount: goalAmount, progress: 0, percentage: 0})
         .then(res => {
           console.log(res);
         });
     }
 
     const getGoals = () => {
-        axios.post('http://localhost:8081/savings/getGoals', {username: 'testUsername'})
+        axios.post('http://localhost:8081/savings/getGoals', {username: variable})
         .then(res => {
             console.log(res)
             const data = res.data;
@@ -83,7 +86,7 @@ const Savings = (props) => {
     }
 
     const getCompleted = () => {
-        axios.post('http://localhost:8081/savings/getCompleted', {username: 'testUsername'})
+        axios.post('http://localhost:8081/savings/getCompleted', {username: variable})
         .then(res => {
             console.log(res)
             const data = res.data;
@@ -109,14 +112,14 @@ const Savings = (props) => {
     }
 
     const markCompleted = (targetIndex) => {
-        axios.post('http://localhost:8081/savings/markCompleted', {username: 'testUsername', dateID: targetIndex})
+        axios.post('http://localhost:8081/savings/markCompleted', {username: variable, dateID: targetIndex})
         .then(res => {
           console.log(res);
         });
     }
 
     const deleteGoal = (targetIndex) => {
-        axios.post('http://localhost:8081/savings/deleteGoal', {username: 'testUsername', dateID: targetIndex})
+        axios.post('http://localhost:8081/savings/deleteGoal', {username: variable, dateID: targetIndex})
         .then(res => {
           console.log(res);
         });
@@ -125,6 +128,12 @@ const Savings = (props) => {
     useEffect(() => {
         getGoals();
         getCompleted();
+        if (goals.length === 0) {
+            setNoGoals('You currently have no savings goals.');
+        }
+        else {
+            setNoGoals('');
+        }
       }, []);
 
     return (
@@ -136,6 +145,7 @@ const Savings = (props) => {
             </div>
             <div className="savings-inProgress-container">
                 <h2 className="savings-inProgress-label">In Progress</h2>
+                <div>{noGoals}</div>
                 {goals.map(goal => (
                     <ProgressBar
                         key={goal.id}

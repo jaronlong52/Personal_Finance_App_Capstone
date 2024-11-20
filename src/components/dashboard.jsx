@@ -23,7 +23,7 @@ function Dashboard() {
   const [data, setData] = useState([]);
 
     const getBudget = () => {
-        axios.post('http://localhost:8081/budget/getBudget', {username: 'testUsername'})
+        axios.post('http://localhost:8081/budget/getBudget', {username: variable})
         .then(res => {
             setData(res.data);
             console.log(res);

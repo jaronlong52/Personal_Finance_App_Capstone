@@ -75,7 +75,6 @@ const Payment = () => {
 
     return (
         <div className="payment-container">
-            <div>{variable}</div>
             <div className="payment-inputs">
                 <input className="payment-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 <input className="payment-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>
