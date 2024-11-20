@@ -1,23 +1,30 @@
 // DataManager.js
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { UsernameContext } from '../contexts/UsernameContext';
 
 const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
     const [newLabel, setNewLabel] = useState('');
     const [newData, setNewData] = useState('');
-    const tData = useState([]);
+    const [tData, setTData] = useState([]);
+
+    const { variable } = useContext(UsernameContext);
 
     const addPoint = (nwLabel, nwPoint) => {
-        axios.post('http://localhost:8081/budget/setBudget', {username: 'testUsername', labels: nwLabel, dataPoints: nwPoint})
+        console.log("newLabel:", nwLabel);
+        console.log("nwPoint:", nwPoint);
+        axios.post('http://localhost:8081/budget/setBudget', {username: variable, labels: nwLabel, dataPoints: nwPoint})
         .then(res => {
-            tData(res.data)
+            setTData(res.data)
         })
     }
 
     const deletePoint = (labelToRm, pointToRm) => {
-        axios.post('http://localhost:8081/budget/delBudget', {username: 'testUsername', label: labelToRm, dataPoint: pointToRm})
+        console.log("labelToRm: ", labelToRm);
+        console.log("pointToRm: ", pointToRm);
+        axios.post('http://localhost:8081/budget/delBudget', {username: variable, label: labelToRm, dataPoint: pointToRm})
         .then(res => {
-            tData(res.data)
+            console.log(res);
         })
     }
     // Function to add a new data point to the pie chart
@@ -43,7 +50,9 @@ const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
         const newLabels = labels.filter((_, i) => i !== index);
         const newDataPoints = dataPoints.filter((_, i) => i !== index);
         // Update the states with new values
-        deletePoint(labels.filter((_, i) => i !== index), dataPoints.filter((_, i) => i !== index))
+        let label1 = labels.filter((_, i) => i === index);
+        let label2 = dataPoints.filter((_, i) => i === index);
+        deletePoint(label1, label2);
         setLabels(newLabels);
         setDataPoints(newDataPoints);
     };
