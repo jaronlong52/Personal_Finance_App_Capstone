@@ -1,9 +1,12 @@
 .dashboard-container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     margin-top: auto;
     border-radius: 0px;
     height: 100%;
     cursor: default;
+    height: 100vh;
   }
 
 .fullpre {
@@ -37,7 +40,6 @@
     border-radius: 0 0 4px 4px;
     background: #fff;
     flex-grow: 1;
-    overflow-y: auto;
   }
   
   hr {
