@@ -66,7 +66,7 @@ app.post('/preview/getTotals', (req, res) => {
 
 app.post('/preview/getSavings', (req, res) => {
     const username = req.body.username;
-    db.query('SELECT * FROM savings WHERE username = ? ORDER BY percentage DESC LIMIT 3', [username], (err, data) => {
+    db.query('SELECT * FROM savings WHERE username = ? AND percentage < 100 ORDER BY percentage DESC LIMIT 3', [username], (err, data) => {
         if (err) return res.json(err);
         return res.json(data);
     });
