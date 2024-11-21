@@ -56,6 +56,14 @@ app.get('/users', (req, res) => {
     })
 })
 
+app.post('/preview/getData', (req, res) => {
+    const username = req.body.username;
+    db.query('SELECT * FROM totals WHERE username = ?', [username], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
 app.post('/income/getRecords', (req, res) => {
     const username = req.body.username;
     const pastDate = req.body.pastDate;
@@ -71,6 +79,7 @@ app.post('/income/inputRecord', (req, res) => {
     const date = req.body.date;
     const amount = req.body.amount;
     const comments = req.body.comments;
+    const total = req.body.total;
 
     db.query('INSERT INTO income (username, date, amount, comments) VALUES (?,?,?,?)', 
         [username, date, amount, comments],
@@ -78,6 +87,21 @@ app.post('/income/inputRecord', (req, res) => {
             console.log(err);
         }
     );
+
+    db.query('UPDATE totals SET income = ? WHERE username = ?',
+        [total, username],
+        (err, result) => {
+            console.log(err);
+        }
+    );
+});
+
+app.post('/income/getTotal', (req, res) => {
+    const username = req.body.username;
+    db.query('SELECT * FROM totals WHERE username = ?', [username], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
 });
 
 app.post('/payment/getRecords', (req, res) => {
@@ -95,6 +119,7 @@ app.post('/payment/inputRecord', (req, res) => {
     const date = req.body.date;
     const amount = req.body.amount;
     const comments = req.body.comments;
+    const total = req.body.total;
 
     db.query('INSERT INTO payment (username, date, amount, comments) VALUES (?,?,?,?)', 
         [username, date, amount, comments],
@@ -102,6 +127,13 @@ app.post('/payment/inputRecord', (req, res) => {
             console.log(err);
         }
     );
+
+    db.query('UPDATE totals SET payment = ? WHERE username = ?',
+    [total, username],
+    (err, result) => {
+        console.log(err);
+    }
+);
 });
 
 app.post('/budget/getBudget', (req, res) => {
