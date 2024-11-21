@@ -197,7 +197,7 @@ app.post('/savings/addGoal', (req, res) => {
 app.post('/savings/getGoals', (req, res) => {
     const username = req.body.username;
     const state = 'in progress';
-    db.query('SELECT * FROM savings WHERE username = ? and state = ?', [username, state], (err, data) => {
+    db.query('SELECT * FROM savings WHERE username = ? and state = ? ORDER BY percentage DESC', [username, state], (err, data) => {
         if(err) return res.json(err);
         return res.json(data);
     });
