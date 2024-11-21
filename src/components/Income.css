@@ -7,10 +7,11 @@
     width: 100%;
     border-collapse: collapse;
     cursor: default;
+    margin-top: 26px;
   }
   
 .income-table th {
-    border: 1px solid #ffffff;
+    border: 1px solid #bdbdbd;
     padding: 8px;
     text-align: left;
     cursor: default;
@@ -27,7 +28,7 @@
 }
 
 .income-table td {
-    border: 1px solid #ffffff;
+    border: 1px solid #bdbdbd;
     padding: 8px;
     text-align: left;
     font-weight: 400;

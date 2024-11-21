@@ -9,9 +9,10 @@ function Preview() {
     const [payment, setPayment] = useState(0);
     const [balance, setBalance] = useState(0);
     const { variable } = useContext(UsernameContext);
+    const [savings, setSavings] = useState([]);
 
-    const getData = () => {
-        axios.post('http://localhost:8081/preview/getData', {username: variable})
+    const getTotals = () => {
+        axios.post('http://localhost:8081/preview/getTotals', {username: variable})
         .then(res => {
             console.log(res);
             const data = res.data;
@@ -23,29 +24,37 @@ function Preview() {
         });
     }
 
-    //Hardcoded for now but must use the db to get info 
-    const percent1 = 20
-    const percent2 = 30.54
-    const percent3 = 100
+    const getSavings = () => {
+        axios.post('http://localhost:8081/preview/getSavings', {username: variable})
+        .then(res => {
+            console.log(res);
+            setSavings(res.data);
+        });
+    }
 
     useEffect(() => {
-        getData();
+        getTotals();
+        getSavings();
       }, []);
   
     return (
-        <div className="page-container">
-            <div className="income-container">
-                <h1>Account Overview</h1>
-                <h3>Total Income: ${income}</h3>
-                <h3>Total Payment: ${payment}</h3>
-                <h3>Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
-
+        <div className="preview-container">
+            <div className="preview-totals-container">
+                <h1 className="preview-totals-title">Account Overview</h1>
+                <div className="preview-totals-body">
+                    <h3 className="preview-totals-income">Total Income: ${income}</h3>
+                    <h3 className="preview-totals-payment">Total Payment: ${payment}</h3>
+                    <h3 className="preview-totals-balance">Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
+                </div>
             </div>
-            <div className="payment-container">
-                <h1>Savings Overview</h1>
-                <h3>Goal 1: {percent1}% Complete</h3>
-                <h3>Goal 2: {percent2}% Complete</h3>
-                <h3>Goal 3: {percent3}% Complete</h3>
+            <div className="preview-savings-container">
+                <h1 className="preview-savings-title">Savings Overview</h1>
+                {savings.map((item, index) => (
+                    <div className="preview-savings-body" key={index}>
+                        <div className="preview-savings-goal">Goal: {item.title}</div>
+                        <div className="preview-savings-percent">{Number(item.percentage).toFixed(2)}% completion</div>
+                    </div>
+                ))}
             </div>
         </div>
     );
