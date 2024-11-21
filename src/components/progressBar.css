@@ -14,8 +14,9 @@
 .progress-bar {
     width: 600px;
     height: 30px;
-    border: solid;
+    border: 2px solid;
     border-radius: 10px;
+    border-color: rgb(119, 119, 119);
     background-color: #e6e6e6;
     margin-bottom: 10px;
     margin-right: 20px;
@@ -66,24 +67,40 @@
 }
 
 .progress-input {
-    border-radius: 3px;
+    border-radius: 5px;
     border: solid 1px;
+    padding: 6px;
 }
 
 .progress-contribute {
     margin-left: 10px;
-    border-radius: 3px;
+    border-radius: 5px;
     border: solid 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
 }
 
 .progress-reset {
     margin-left: 10px;
     margin-right: 10px;
-    border-radius: 3px;
+    border-radius: 5px;
     border: solid 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
 }
 
 .progress-delete {
-    border-radius: 3px;
+    border-radius: 5px;
     border: solid 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.progress-contribute:hover,
+.progress-reset:hover,
+.progress-delete:hover {
+    background-color: #ddd;
 }
