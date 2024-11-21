@@ -14,6 +14,9 @@ const Income = () => {
     const [amount, setAmount] = useState('');
     const [comments, setComments] = useState('');
 
+    const [balance, setBalance] = useState(0);
+    const [totalIncome, setTotalIncome] = useState(0);
+
     // for dropdown menu
     const [selected, setSelected] = useState('');
     const options = [
@@ -24,6 +27,17 @@ const Income = () => {
         { value: '3 Months', label: '3 Months'},
     ]
 
+    const getTotalIncome = () => {
+        axios.post('http://localhost:8081/income/getTotal', {username: variable})
+        .then(res => {
+          console.log(res)
+          const data = res.data;
+          const object = data[0];
+          setTotalIncome(object.income);
+          setBalance(Number(object.income) - Number(object.payment));
+        });
+    }
+
     const getRecords = () => {
         axios.post('http://localhost:8081/income/getRecords', {username: variable, pastDate: pastDate,})
         .then(res => {
@@ -33,7 +47,8 @@ const Income = () => {
     }
 
     const inputRecord = () => {
-        axios.post('http://localhost:8081/income/inputRecord', {username: variable, date: date, amount: amount, comments: comments})
+        const total = Number(amount) + Number(totalIncome);
+        axios.post('http://localhost:8081/income/inputRecord', {username: variable, date: date, amount: amount, comments: comments, total: total})
         .then(res => {
           console.log(res);
         });
@@ -71,10 +86,15 @@ const Income = () => {
 
     useEffect(() => {
         getRecords();
-      }, [date]);
+    }, [date]);
+
+    useEffect(() => {
+        getTotalIncome();
+    }, [amount]);
 
     return (
         <div className="income-container">
+            <h3>Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
             <div className="income-inputs">
                 <input className="income-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 <input className="income-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>

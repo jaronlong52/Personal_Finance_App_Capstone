@@ -14,6 +14,9 @@ const Payment = () => {
     const [amount, setAmount] = useState('');
     const [comments, setComments] = useState('');
 
+    const [balance, setBalance] = useState(0);
+    const [totalPayment, setTotalPayment] = useState(0);
+
     // for dropdown menu
     const [selected, setSelected] = useState('');
     const options = [
@@ -24,6 +27,17 @@ const Payment = () => {
         { value: '3 Months', label: '3 Months'},
     ]
 
+    const getTotalPayment = () => {
+        axios.post('http://localhost:8081/income/getTotal', {username: variable})
+        .then(res => {
+          console.log(res)
+          const data = res.data;
+          const object = data[0];
+          setBalance(Number(object.income) - Number(object.payment));
+          setTotalPayment(object.payment);
+        });
+    }
+
     const getRecords = () => {
         axios.post('http://localhost:8081/payment/getRecords', {username: variable, pastDate: pastDate,})
         .then(res => {
@@ -33,7 +47,8 @@ const Payment = () => {
     }
 
     const inputRecord = () => {
-        axios.post('http://localhost:8081/payment/inputRecord', {username: variable, date: date, amount: amount, comments: comments})
+        const total = Number(totalPayment) + Number(amount);
+        axios.post('http://localhost:8081/payment/inputRecord', {username: variable, date: date, amount: amount, comments: comments, total: total})
         .then(res => {
           console.log(res);
         });
@@ -73,8 +88,13 @@ const Payment = () => {
         getRecords();
       }, [date]);
 
+    useEffect(() => {
+        getTotalPayment();
+    }, [amount]);
+
     return (
         <div className="payment-container">
+            <h3>Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
             <div className="payment-inputs">
                 <input className="payment-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 <input className="payment-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>
