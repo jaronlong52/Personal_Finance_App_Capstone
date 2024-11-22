@@ -1,0 +1,61 @@
+.controlpie-container {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.789);
+    height: 370px;
+}
+
+.controlpie-inputs {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+.controlpie-label {
+    width: 250px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 5px;
+}
+
+.controlpie-amount {
+    width: 125px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 5px;
+}
+
+.controlpie-add-button {
+    width: 100px;
+    padding: 10px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    color: black;
+}
+
+.controlpie-data-body {
+    margin-top: 30px;
+}
+
+.controlpie-data-labels {
+    padding: 0px;
+}
+
+.controlpie-list-items {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.controlpie-remove-button {
+    width: 120px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 4px;
+    margin-right: 175px;
+}

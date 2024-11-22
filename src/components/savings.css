@@ -5,22 +5,33 @@
 
 .savings-title-input {
     padding: 10px;
-    margin: 10px;
+    width: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 4px;
 }
 
 .savings-amount-input {
     padding: 10px;
+    width: 230px;
     margin: 10px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 4px;
 }
 
 .savings-create-goal {
     padding: 10px;
+    width: 170px;
     margin: 10px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 4px;
 }
 
 .savings-inProgress-label {
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .savings-ratio-label {
@@ -33,14 +44,14 @@
 
 .savings-completed-label {
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .savings-completed-item {
     width: 800px;
     border: solid;
     border-radius: 10px;
-    border-color: rgb(119, 119, 119);
+    border-color: rgb(100, 100, 100);
     border-width: 2px;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -61,7 +72,7 @@
 .savings-progress-bar {
     width: 600px;
     height: 30px;
-    border: solid;
+    border: 2px solid rgb(100, 100, 100);
     border-radius: 10px;
     background-color: #20690a;
     margin-top: 20px;

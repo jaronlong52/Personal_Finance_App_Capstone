@@ -1,4 +1,5 @@
-.pieChart {
-    padding-top: 100px;
-    padding-left: 1500px;
+.chartjspie-pieChart {
+    margin-right: 50px;
+    margin-left: 50px;
+    background-color: red;
 }

@@ -77,8 +77,8 @@
     width: 450px;
     height: 25px;
     background: #eaeaea;
-    border-radius: 15px;
-    border: 2px, solid, #1e1e1e;
+    border-radius: 5px;
+    border: 2px, solid, rgb(100, 100, 100);
     font-size: 19px;
     padding: 10px;
     font-weight: 300;
@@ -92,8 +92,8 @@
     width: 650px;
     height: 25px;
     background: #eaeaea;
-    border-radius: 15px;
-    border: 2px, solid, #1e1e1e;
+    border-radius: 5px;
+    border: 2px, solid, rgb(100, 100, 100);
     font-size: 19px;
     padding: 10px;
     font-weight: 300;
@@ -105,11 +105,9 @@
     justify-content: center;
     align-items: center;
     width: 250px;
-    color: #000000;
     background: #eaeaea;
-    border-radius: 15px;
-    border: 2px, solid, #1e1e1e;
+    border-radius: 5px;
+    border: 2px, solid, rgb(100, 100, 100);
     font-size: 19px;
-    font-weight: 550;
     cursor: pointer;
 }
