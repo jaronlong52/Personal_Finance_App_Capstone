@@ -11,6 +11,7 @@ const Savings = (props) => {
     const [goalAmount, setGoalAmount] = useState('');
     const [completedGoals, setCompletedGoals] = useState([]);
     const [noGoals, setNoGoals] = useState('');
+    const [noCompletedGoals, setNoCompletedGoals] = useState('');
 
     const { variable } = useContext(UsernameContext);
 
@@ -64,6 +65,13 @@ const Savings = (props) => {
             console.log(res)
             const data = res.data;
 
+            if (data.length === 0) {
+                setNoGoals('You currently have no savings goals.');
+            }
+            else {
+                setNoGoals('');
+            }
+
             const newGoals = data.map(goal => ({
                 id: goal.dateID,
                 title: goal.title,
@@ -90,6 +98,13 @@ const Savings = (props) => {
         .then(res => {
             console.log(res)
             const data = res.data;
+
+            if (data.length === 0) {
+                setNoCompletedGoals('You currently have no completed goals.');
+            }
+            else {
+                setNoCompletedGoals('');
+            }
 
             const newGoals = data.map(goal => ({
                 id: goal.dateID,
@@ -128,12 +143,6 @@ const Savings = (props) => {
     useEffect(() => {
         getGoals();
         getCompleted();
-        if (goals.length === 0) {
-            setNoGoals('You currently have no savings goals.');
-        }
-        else {
-            setNoGoals('');
-        }
       }, []);
 
     return (
@@ -160,6 +169,7 @@ const Savings = (props) => {
             </div>
             <div className="savings-completed-container">
                 <h2 className="savings-completed-label">Completed</h2>
+                <div>{noCompletedGoals}</div>
                 {completedGoals.map(goal => (
                     <div>
                         <div className='savings-completed-item'>

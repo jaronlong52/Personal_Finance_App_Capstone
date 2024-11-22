@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { UsernameContext } from '../contexts/UsernameContext';
+import './chartjspie.css'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -28,6 +29,8 @@ const PieChart = ({ labels = [], dataPoints = [] }) => { // Default values to av
 
     const options = {
         responsive: true,
+        maintainAspectRatio: false,
+        aspectRatio: 1,
         plugins: {
             legend: {
                 position: 'top',
@@ -45,8 +48,8 @@ const PieChart = ({ labels = [], dataPoints = [] }) => { // Default values to av
     };
 
     return (
-        <div className='pieChart' style={{paddingLeft: '200px', paddingRight: '100px', width: '500px' }}>
-            <Pie data={data} options={options} />
+        <div className='chartjspie-pieChart'>
+            <Pie data={data} options={options} height={200} width={200} style={{height: 300, width: 300}}/>
         </div>
     );
 };

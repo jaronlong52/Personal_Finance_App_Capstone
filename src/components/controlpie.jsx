@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { UsernameContext } from '../contexts/UsernameContext';
+import './controlpie.css';
 
 const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
     const [newLabel, setNewLabel] = useState('');
@@ -58,38 +59,37 @@ const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
     };
 
     return (
-        <div style={{ margin: '20px', width: '300px' }}>
+        <div className="controlpie-container">
             <h3>Add Data Point</h3>
-            <div style={{ display: 'flex', marginBottom: '10px' }}>
+            <div className="controlpie-inputs">
                 <input
+                    className="controlpie-label"
                     type="text"
                     placeholder="Label"
                     value={newLabel}
                     onChange={(e) => setNewLabel(e.target.value)}
-                    style={{ marginRight: '10px', padding: '5px', flex: '1' }}
                 />
                 <input
+                    className="controlpie-amount"
                     type="number"
                     placeholder="$"
                     value={newData}
                     onChange={(e) => setNewData(e.target.value)}
-                    style={{ marginRight: '10px', padding: '5px', width: '70px' }}
                 />
                 <button 
+                    className="controlpie-add-button"
                     onClick={addDataPoint} 
                     disabled={newLabel.trim() === "" || !newData || isNaN(Number(newData)) || Number(newData) <= 0}
-                    style={{ padding: '5px 10px' }}
                 >
                     Add Piece
                 </button>
             </div>
-            <div style={{ marginTop: '20px' }}>
-                <h4>Current Pieces:</h4>
-                <ul style={{ listStyleType: 'none', padding: 0 }}>
+            <div className='controlpie-data-body'>
+                <ul className='controlpie-data-labels'>
                     {labels.map((label, index) => (
-                        <li key={index} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+                        <li key={index} className='controlpie-list-items'>
                             <span>{label} - ${dataPoints[index]}</span>
-                            <button onClick={() => removeDataPoint(index)} style={{ marginLeft: '10px' }}>
+                            <button className='controlpie-remove-button' onClick={() => removeDataPoint(index)}>
                                 Remove
                             </button>
                         </li>
