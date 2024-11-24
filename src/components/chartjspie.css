@@ -1,5 +1,4 @@
 .chartjspie-pieChart {
-    margin-right: 50px;
-    margin-left: 50px;
-    background-color: red;
+    width: 400px;
+    height: 400px;
 }

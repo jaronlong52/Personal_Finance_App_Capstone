@@ -48,6 +48,29 @@
   overflow-y: auto;
 }
 
+.dashboard-budget-header {
+  color: #184a08;
+}
+
+.dashboard-budget-container {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  width: 500px; 
+  height: 100%;
+  background-color: #ffffff; 
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 6px;
+  padding-bottom: 28px;
+  box-sizing: border-box;
+  margin: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.789);
+  
+}
+
 hr {
   margin: 50px 0;
 }

@@ -20,6 +20,32 @@
   margin-bottom: 20px;
 }
 
+.preview-totals-title {
+  color: #184a08;
+  margin-bottom: 25px;
+}
+
+.preview-savings-title {
+  color: #184a08;
+  margin-bottom: 0px;
+}
+
+.preview-savings-subtitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.preview-savings-divider {
+  border: none;
+  border-top: 3px solid #383838;
+  margin-top: -15px;
+  margin-bottom: 10px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .preview-totals-body {
   font-size: 15px;
 }
@@ -38,10 +64,9 @@
 
 .preview-savings-goal {
   font-size: 17px;
-  padding-bottom: 5px;
 }
 
 .preview-savings-percent {
   margin-left: 10px;
-  font-size: 16px;
+  font-size: 17px;
 }

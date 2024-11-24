@@ -102,7 +102,10 @@ function Dashboard() {
           <div className="tabs active-tabs">
             <div className='fullpre'>
               <div><Preview/></div>
-              <div className='chart'><PieChart labels={labels} dataPoints={dataPoints} /></div>
+              <div className='dashboard-budget-container'>
+                <h1 className='dashboard-budget-header'>Budget</h1>
+                <div className='chart'><PieChart labels={labels} dataPoints={dataPoints} /></div>
+              </div>
             </div>
           </div>
         )}
