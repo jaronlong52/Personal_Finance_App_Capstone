@@ -8,6 +8,8 @@ const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
     const [newLabel, setNewLabel] = useState('');
     const [newData, setNewData] = useState('');
     const [tData, setTData] = useState([]);
+    const [monthlyIncome, setMonthlyIncome] = useState(0);
+    const [amountBudgeted, setAmountBudgeted] = useState(0);
 
     const { variable } = useContext(UsernameContext);
 
@@ -60,7 +62,9 @@ const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
 
     return (
         <div className="controlpie-container">
-            <h3>Add Data Point</h3>
+            <h2>Monthly Budget Manager</h2>
+            <h3>Monthly Income: </h3>
+            <h3>Amount Budgeted: </h3>
             <div className="controlpie-inputs">
                 <input
                     className="controlpie-label"
