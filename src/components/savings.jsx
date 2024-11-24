@@ -153,7 +153,7 @@ const Savings = (props) => {
                 <button className='savings-create-goal' onClick={handleCreateGoal}>Create New Goal</button>
             </div>
             <div className="savings-inProgress-container">
-                <h2 className="savings-inProgress-label">In Progress</h2>
+                <h1 className="savings-inProgress-label">In Progress</h1>
                 <div>{noGoals}</div>
                 {goals.map(goal => (
                     <ProgressBar
@@ -168,7 +168,7 @@ const Savings = (props) => {
                 ))}
             </div>
             <div className="savings-completed-container">
-                <h2 className="savings-completed-label">Completed</h2>
+                <h1 className="savings-completed-label">Completed</h1>
                 <div>{noCompletedGoals}</div>
                 {completedGoals.map(goal => (
                     <div>

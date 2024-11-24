@@ -3,16 +3,55 @@
     padding-right: 40px;
     padding-top: 10px;
     padding-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.789);
-    height: 370px;
+    height: auto;
 }
+
+.controlpie-monthly-update {
+    display: flex;
+    flex-direction: row;
+    margin-top: -4px;
+}
+
+.controlpie-monthlyIncome-title {
+    margin-right: 168px;
+    margin-top: 19px;
+}
+
+.controlpie-amount-budget-title {
+    margin-top: -5px;
+}
+
+.controlpie-amount-budgeted-green {
+    color: green;
+}
+
+.controlpie-amount-budgeted-red {
+    color: red;
+}
+
+.controlpie-popup {
+    margin-top: 17px;
+}
+
+.controlpie-divider {
+    border: none;
+    border-top: 3px solid #383838;
+    margin-top: 18px;
+    margin-bottom: 0px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 .controlpie-inputs {
     display: flex;
     flex-direction: row;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .controlpie-label {
@@ -37,6 +76,7 @@
     border: 2px solid rgb(100, 100, 100);
     border-radius: 5px;
     color: black;
+    cursor: pointer;
 }
 
 .controlpie-data-body {
@@ -58,4 +98,10 @@
     border: 2px solid rgb(100, 100, 100);
     border-radius: 4px;
     margin-right: 175px;
+    cursor: pointer;
+}
+
+.controlpie-remove-button:hover,
+.controlpie-add-button:hover {
+    background-color: #ddd;
 }

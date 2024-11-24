@@ -8,6 +8,7 @@
     border-collapse: collapse;
     cursor: default;
     margin-top: 26px;
+    margin-bottom: 30px;
   }
   
 .income-table th {
@@ -53,7 +54,7 @@
     cursor: pointer;
 }
 
-.get-records {
+.income-get-records {
     width: 110px;
     height: 30px;
     font-size: 15px;
@@ -110,4 +111,9 @@
     border: 2px, solid, rgb(100, 100, 100);
     font-size: 19px;
     cursor: pointer;
+}
+
+.income-submit:hover,
+.income-get-records:hover {
+    background-color: #ddd;
 }

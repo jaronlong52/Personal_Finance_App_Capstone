@@ -176,6 +176,14 @@ app.post ('/budget/delBudget', (req, res) => {
     );
  });
 
+ app.post('/controlpie/getMonthlyIncome', (req, res) => {
+    const username = req.body.username;
+    db.query('SELECT monthlyIncome FROM totals WHERE username = ?', [username], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
 app.post('/savings/addGoal', (req, res) => {
 
     const username = req.body.username;
@@ -248,6 +256,15 @@ app.post('/progress/reset', (req, res) => {
     const progress = 0;
     const percent = 0;
     db.query('UPDATE savings SET progress = ?, percentage = ? WHERE username = ? and dateID = ?', [progress, percent, username, id], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
+app.post('/budgetPopup/update', (req, res) => {
+    const username = req.body.username;
+    const value = req.body.value;
+    db.query('UPDATE totals SET monthlyIncome = ? WHERE username = ?', [value, username], (err, data) => {
         if(err) return res.json(err);
         return res.json(data);
     });

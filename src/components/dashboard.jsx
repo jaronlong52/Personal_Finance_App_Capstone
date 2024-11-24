@@ -102,39 +102,34 @@ function Dashboard() {
           <div className="tabs active-tabs">
             <div className='fullpre'>
               <div><Preview/></div>
-              <div className='chart'><PieChart labels={labels} dataPoints={dataPoints} /></div>
+              <div className='dashboard-budget-container'>
+                <h1 className='dashboard-budget-header'>Budget</h1>
+                <div className='chart'><PieChart labels={labels} dataPoints={dataPoints} /></div>
+              </div>
             </div>
           </div>
         )}
 
         {toggleState === 2 && (
           <div className="tabs active-tabs">
-            <h2>Income</h2>
-            <hr className='divider'/>
             <Income/>
           </div>
         )}
 
         {toggleState === 3 && (
           <div className="tabs active-tabs">
-            <h2>Payments</h2>
-            <hr className='divider'/>
             <Payment/>
           </div>
         )}
 
         {toggleState === 4 && (
           <div className="tabs active-tabs">
-            <h2>Budget</h2>
-            <hr className='divider'/>
             <Budget/>
           </div>
         )}
 
         {toggleState === 5 && (
           <div className="tabs active-tabs">
-            <h2>Savings Goals</h2>
-            <hr className='divider'/>
             <Savings/>
           </div>
         )}

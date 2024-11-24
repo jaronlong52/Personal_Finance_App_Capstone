@@ -1,13 +1,13 @@
 .combinedChart {
     display: flex; /* Use flexbox layout */
     flex-direction: row;
+    justify-content: space-between;
+}
+
+.piecombiner-data {
+    margin-left: 90px;
 }
 
 .piecombiner-piechart {
-    width: 100%;      /* Ensures full width */
-    height: 100%;     /* Ensures full height */
-    max-width: 800px; /* You can set a max width */
-    max-height: 800px;/* You can set a max height */
-    position: relative; /* Allows the chart to take up available space */
-    margin: 0 auto;   /* Center it if you want */
+    margin-top: 70px;
 }

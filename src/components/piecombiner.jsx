@@ -7,6 +7,8 @@ import { UsernameContext } from '../contexts/UsernameContext';
 
 function FullPie() {
     const [data, setData] = useState([]);
+    const [dataPoints, setDataPoints] = useState([]);
+    const [labels, setLabels] = useState([]);
 
     const {variable} = useContext(UsernameContext);
 
@@ -17,9 +19,6 @@ function FullPie() {
             console.log(res);
         });
     }
-
-    const amounts = data.map(item => item.amount);
-    const allLabels = data.map(item => item.label);
 
     useEffect(() => {
         getBudget();
@@ -36,9 +35,6 @@ function FullPie() {
             setLabels(allLabels);
         }
     }, [data]); // Runs when `data` changes
-    
-    const [dataPoints, setDataPoints] = useState(amounts);
-    const [labels, setLabels] = useState(allLabels);
 
     return (
         <div className="combinedChart">

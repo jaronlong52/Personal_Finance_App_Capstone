@@ -97,9 +97,9 @@ const Income = () => {
             <h3>Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
             <div className="income-inputs">
                 <input className="income-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
-                <input className="income-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>
+                <input className="income-input" value={amount} placeholder='$' onChange={(e) => setAmount(e.target.value)}/>
                 <input className="income-comments" value={comments} placeholder='Comments' onChange={(e) => setComments(e.target.value)}/>
-                <button className='income-submit' onClick={inputRecord}>Submit</button>
+                <button className='income-submit' onClick={inputRecord}>Add Record</button>
             </div>
             <div className='income-display'>
                 <select className='income-dropdown-class'
@@ -113,7 +113,7 @@ const Income = () => {
                         </option>
                     ))}
                 </select>
-                <button className='get-records' onClick={getRecords}>Get Records</button>
+                <button className='income-get-records' onClick={getRecords}>Get Records</button>
             </div>
             <table className="income-table">
                     <thead>

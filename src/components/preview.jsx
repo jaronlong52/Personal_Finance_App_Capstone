@@ -49,10 +49,15 @@ function Preview() {
             </div>
             <div className="preview-savings-container">
                 <h1 className="preview-savings-title">Savings Overview</h1>
+                <div className="preview-savings-subtitle">
+                    <h2>Goals</h2>
+                    <h2>Percent Complete</h2>
+                </div>
+                <hr className='preview-savings-divider'/>
                 {savings.map((item, index) => (
                     <div className="preview-savings-body" key={index}>
-                        <div className="preview-savings-goal">Goal: {item.title}</div>
-                        <div className="preview-savings-percent">{Number(item.percentage).toFixed(2)}% completion</div>
+                        <div className="preview-savings-goal">{item.title}</div>
+                        <div className="preview-savings-percent">{Number(item.percentage).toFixed(2)}%</div>
                     </div>
                 ))}
             </div>
