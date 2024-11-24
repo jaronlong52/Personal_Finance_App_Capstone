@@ -3,33 +3,42 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { UsernameContext } from '../contexts/UsernameContext';
 import './controlpie.css';
+import ValueChangerPopup from './budgetPopup';
 
 const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
     const [newLabel, setNewLabel] = useState('');
     const [newData, setNewData] = useState('');
-    const [tData, setTData] = useState([]);
-    const [monthlyIncome, setMonthlyIncome] = useState(0);
-    const [amountBudgeted, setAmountBudgeted] = useState(0);
+    const [monthlyIncome, setMonthlyIncome] = useState('');
+    const [amountBudgeted, setAmountBudgeted] = useState('');
 
     const { variable } = useContext(UsernameContext);
 
     const addPoint = (nwLabel, nwPoint) => {
-        console.log("newLabel:", nwLabel);
-        console.log("nwPoint:", nwPoint);
         axios.post('http://localhost:8081/budget/setBudget', {username: variable, labels: nwLabel, dataPoints: nwPoint})
         .then(res => {
-            setTData(res.data)
+            console.log(res);
         })
     }
 
     const deletePoint = (labelToRm, pointToRm) => {
-        console.log("labelToRm: ", labelToRm);
-        console.log("pointToRm: ", pointToRm);
         axios.post('http://localhost:8081/budget/delBudget', {username: variable, label: labelToRm, dataPoint: pointToRm})
         .then(res => {
             console.log(res);
         })
     }
+
+    const getMonthlyIncome = () => {
+        axios.post('http://localhost:8081/controlpie/getMonthlyIncome', {username: variable})
+        .then(res => {
+            setMonthlyIncome(res.data[0].monthlyIncome);
+        })
+    }
+
+    useEffect(() => {
+        const totalBudgeted = dataPoints.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        setAmountBudgeted(totalBudgeted);
+    }, [dataPoints]);
+
     // Function to add a new data point to the pie chart
     const addDataPoint = () => {
         // Trim whitespace and check if the new label is unique
@@ -60,11 +69,30 @@ const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
         setDataPoints(newDataPoints);
     };
 
+    useEffect(() => {
+        getMonthlyIncome();
+    }, []);
+
+    const handleValueChange = (newValue) => {
+        setMonthlyIncome(newValue);
+    };
+
+    const budgetStatusClass = amountBudgeted < monthlyIncome ? 'controlpie-amount-budgeted-green' : 'controlpie-amount-budgeted-red';
+
     return (
         <div className="controlpie-container">
-            <h2>Monthly Budget Manager</h2>
-            <h3>Monthly Income: </h3>
-            <h3>Amount Budgeted: </h3>
+            <div className='controlpie-monthly-info'>
+                <h2>Monthly Budget Manager</h2>
+                <hr className='controlpie-divider'/>
+                <div className='controlpie-monthly-update'>
+                    <h3 className='controlpie-monthlyIncome-title'>Monthly Income: ${monthlyIncome}</h3>
+                    <div className='controlpie-popup'><ValueChangerPopup currentValue={monthlyIncome} onValueChange={handleValueChange} /></div>
+                </div>
+                <h3 className={`controlpie-amount-budget-title ${budgetStatusClass}`}>
+                    Amount Budgeted: ${amountBudgeted} / ${monthlyIncome}
+                </h3>
+            </div>
+            <hr className='controlpie-divider'/>
             <div className="controlpie-inputs">
                 <input
                     className="controlpie-label"
