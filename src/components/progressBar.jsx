@@ -19,10 +19,15 @@ const ProgressBar = (props) => {
             else {
                 let temp = parseFloat(progress);
                 temp = temp + parseFloat(amount);
-                setProgress(temp.toFixed(2));
+                if (temp < goal) {
+                    setProgress(temp.toFixed(2));
+                } else {
+                    setProgress(goal);
+                }
+                
                 let progressPercentage = (temp.toFixed(2) / goal) * 100;
                 let progWidth = progressPercentage < 100 ? progressPercentage : 100;
-                addContribute(temp.toFixed(2), progWidth);
+                addContribute(temp.toFixed(2) < goal ? temp.toFixed(2) : goal , progWidth);
             }
             setAmount('');
         }

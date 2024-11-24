@@ -9,6 +9,7 @@
     padding-right: 40px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.789);
     z-index: 1000;
+    border-radius: 10px;
 }
 
 .popup-content {
@@ -62,6 +63,8 @@
     border: 2px solid rgb(100, 100, 100);
     border-radius: 5px;
     color: black;
+    cursor: pointer;
+    background-color: white;
 }
 
 /* Optional: Add background overlay to the page when popup is visible */
@@ -74,4 +77,9 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -1;
+  border-radius: 10px;
+}
+
+.budgetPopup-update-button:hover {
+    background-color: #ddd;
 }

@@ -3,6 +3,8 @@
     padding-right: 40px;
     padding-top: 10px;
     padding-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.789);
@@ -74,6 +76,7 @@
     border: 2px solid rgb(100, 100, 100);
     border-radius: 5px;
     color: black;
+    cursor: pointer;
 }
 
 .controlpie-data-body {
@@ -95,4 +98,10 @@
     border: 2px solid rgb(100, 100, 100);
     border-radius: 4px;
     margin-right: 175px;
+    cursor: pointer;
+}
+
+.controlpie-remove-button:hover,
+.controlpie-add-button:hover {
+    background-color: #ddd;
 }

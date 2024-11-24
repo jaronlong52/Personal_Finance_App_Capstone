@@ -8,6 +8,7 @@
     border-collapse: collapse;
     cursor: default;
     margin-top: 26px;
+    margin-bottom: 30px;
   }
   
 .payment-table th {
@@ -110,4 +111,9 @@
     border: 2px, solid, rgb(100, 100, 100);
     font-size: 19px;
     cursor: pointer;
+}
+
+.payment-submit:hover,
+.payment-get-records:hover {
+    background-color: #ddd;
 }

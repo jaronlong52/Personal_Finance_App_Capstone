@@ -97,9 +97,9 @@ const Payment = () => {
             <h3>Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
             <div className="payment-inputs">
                 <input className="payment-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
-                <input className="payment-input" value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>
+                <input className="payment-input" value={amount} placeholder='$' onChange={(e) => setAmount(e.target.value)}/>
                 <input className="payment-comments" value={comments} placeholder='Comments' onChange={(e) => setComments(e.target.value)}/>
-                <button className='payment-submit' onClick={inputRecord}>Submit</button>
+                <button className='payment-submit' onClick={inputRecord}>Add Record</button>
             </div>
             <div className='payment-display'>
                 <select className='payment-dropdown-class'
