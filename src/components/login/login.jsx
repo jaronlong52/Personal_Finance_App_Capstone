@@ -26,6 +26,7 @@ const Login = () => {
   const [usernames, setUsernames] = useState([]);
 
   // Hold error messages for login and sign up input
+  const [errorName, setErrorName] = useState('');
   const [errorUsername, setErrorUsername] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
 
@@ -41,46 +42,58 @@ const Login = () => {
   // Validate user input and set error messages
   const validateInput = () => {
     // set error messages to empty
+    setErrorName('');
     setErrorUsername('');
     setErrorPassword('');
+
+    // check if name field is correct if trying to sign up
+    if (action === "Sign Up") {
+      if ('' === name) {
+        setErrorName('Please enter your name');
+        return false;
+      } else if (name.length > 19) {
+        setErrorName('Name is too long');
+        return false;
+      }
+    }
 
     // check if fields are empty
     if ('' === username) {
       setErrorUsername('Please enter your username');
-      return
+      return false;
     }
 
     if ('' === password) {
       setErrorPassword('Please enter your password');
-      return
+      return false;
     }
 
     // check if fields are valid length
     if (username.length > 19) {
       setErrorUsername('Username is too long');
-      return
+      return false;
     }
 
     if (username.length < 1) {
       setErrorUsername('Username is too short');
-      return
+      return false;
     }
 
     if (password.length > 19) {
       setErrorPassword('Password is too long');
-      return
+      return false;
     }
 
     if (password.length < 6) {
       setErrorPassword('Password must be at least 6 characters');
-      return
+      return false;
     }
 
     // for login, check if username does not exist
     if (action === 'Login') {
       if (!usernames.some(obj => obj.username === username)) {
         setErrorUsername('Username does not exist');
-        return
+        return false;
       }
     }
 
@@ -88,46 +101,49 @@ const Login = () => {
     if (action === 'Sign Up') {
       if (usernames.some(obj => obj.username === username)) {
         setErrorUsername('Username already in use');
-        return
+        return false;
       }
     }
+    return true;
   }
 
   // test user input and, if valid, enter data into database
   const register = () => {
 
     // validate user input
-    validateInput();
+    if (validateInput()) {
+      // enter user input into database
+      axios.post('http://localhost:8081/register', {
+        username: username,
+        name: name, 
+        password: password,
+      }).then((response) => {
+        console.log(response);
+      });
 
-    // enter user input into database
-    axios.post('http://localhost:8081/register', {
-      username: username,
-      name: name, 
-      password: password,
-    }).then((response) => {
-      console.log(response);
-    });
-
-    navigate('../Dashboard');
+      navigate('../Dashboard');
+    }
   };
 
   // test user input and, if valid, let user access data
   const login = () => {
 
     // validate user input
-    validateInput();
-
-    // see if user input info is in database and set loginStatus based on that
-    // could probably use a .get instead of .post but not really any reason to that I know of
-    axios.post('http://localhost:8081/login', {
-      username: username, 
-      password: password,
-    }).then((response) => {
-      console.log(response);
-      if (response.data.message === 'Valid') {
-        navigate('../Dashboard');
-      }
-    });
+    if (validateInput()) {
+      // see if user input info is in database and set loginStatus based on that
+      // could probably use a .get instead of .post but not really any reason to that I know of
+      axios.post('http://localhost:8081/login', {
+        username: username, 
+        password: password,
+      }).then((response) => {
+        console.log(response);
+        if (response.data.message === 'Valid') {
+          navigate('../Dashboard');
+        } else {
+          setErrorPassword('Invalid Username or Password')
+        }
+      });
+    }
   };
 
   const handleUsername = (e) => {
@@ -146,7 +162,7 @@ const Login = () => {
             <img src={user_icon} alt="" />
             <input type="name" value={name} onChange={e => setName(e.target.value)} placeholder="Name"/>
           </div>}
-          <label className="error-label" htmlFor="name"></label>
+          <label className="error-label" htmlFor="name">{errorName}</label>
           <div className='input'>
             <img src={user_icon} alt="" />
             <input id="username" type="username" value={username} onChange={handleUsername} placeholder="Username"/>
@@ -158,13 +174,12 @@ const Login = () => {
           </div>
           <label className="error-label" htmlFor="password">{errorPassword}</label>
         </div>
-        {/* {action==="Sign Up"?<div></div>:<div className="forgot-password">Forget Password? <span>Click Here!</span></div>} */}
         <div className="info-submit-container">
           <button className="info-submit" type='submit' onClick={action==="Sign Up"?register:login}>Submit</button>
         </div>
         <div className="submit-container">
           <div className={action==="Login"?"submit gray":"submit"} onClick={()=>{setAction("Sign Up")}}>Sign Up</div>
-          <div className={action==="Sign Up"?"submit gray":"submit"} onClick={()=>{setAction("Login")}}>Login</div>
+          <div className={action==="Sign Up"?"submit gray":"submit"} onClick={()=>{setAction("Login"); setErrorName('')}}>Login</div>
         </div>
     </div>
   )
