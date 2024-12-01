@@ -30,7 +30,11 @@ const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
     const getMonthlyIncome = () => {
         axios.post('http://localhost:8081/controlpie/getMonthlyIncome', {username: variable})
         .then(res => {
-            setMonthlyIncome(res.data[0].monthlyIncome);
+            const data = res.data;
+            const object = data[0];
+            if (isNaN(object.monthlyIncome) === false) {
+                setMonthlyIncome(object.monthlyIncome);
+            }
         })
     }
 

@@ -34,7 +34,6 @@ const Login = () => {
   useEffect(() => {
     axios.get('http://localhost:8081/users')
     .then(res => {
-      console.log(res)
       setUsernames(res.data);
     });
   }, []);
@@ -117,8 +116,6 @@ const Login = () => {
         username: username,
         name: name, 
         password: password,
-      }).then((response) => {
-        console.log(response);
       });
 
       navigate('../Dashboard');
@@ -136,7 +133,6 @@ const Login = () => {
         username: username, 
         password: password,
       }).then((response) => {
-        console.log(response);
         if (response.data.message === 'Valid') {
           navigate('../Dashboard');
         } else {

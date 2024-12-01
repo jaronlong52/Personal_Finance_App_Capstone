@@ -16,18 +16,18 @@ function Preview() {
         .then(res => {
             console.log(res);
             const data = res.data;
-
             const firstObject = data[0];
-            setIncome(firstObject.income);
-            setPayment(firstObject.payment);
-            setBalance(Number(firstObject.income) - Number(firstObject.payment));
+            if (isNaN(firstObject.income) === false && isNaN(firstObject.income) === false) {
+                setIncome(firstObject.income);
+                setPayment(firstObject.payment);
+                setBalance(Number(firstObject.income) - Number(firstObject.payment));
+            }
         });
     }
 
     const getSavings = () => {
         axios.post('http://localhost:8081/preview/getSavings', {username: variable})
         .then(res => {
-            console.log(res);
             setSavings(res.data);
         });
     }
