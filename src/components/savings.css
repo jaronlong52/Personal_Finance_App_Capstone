@@ -1,0 +1,106 @@
+.savings-new-goal {
+    display: flex;
+    flex-direction: row;
+}
+
+.savings-title-input {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    width: 450px;
+    height: 25px;
+    background: #eaeaea;
+    font-size: 19px;
+    font-weight: 300;
+    color: #000000;
+}
+
+.savings-amount-input {
+    padding: 10px;
+    width: 230px;
+    margin: 10px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    font-size: 19px;
+    font-weight: 300;
+    background: #eaeaea;
+    color: #000000;
+    height: 25px;
+}
+
+.savings-create-goal {
+    padding: 10px;
+    width: 210px;
+    margin: 10px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 19px;
+    font-weight: 300;
+    background: #eaeaea;
+    color: #000000;
+}
+
+.savings-inProgress-label {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.savings-ratio-label {
+    display: flex;
+    flex-direction: row;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-top: 19px;
+}
+
+.savings-completed-label {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.savings-completed-item {
+    width: 800px;
+    border: solid;
+    border-radius: 10px;
+    border-color: rgb(100, 100, 100);
+    border-width: 2px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 10px;
+}
+
+.savings-completed-item-label {
+    display: flex;
+    flex-direction: row;
+}
+
+.savings-completed-title {
+    margin-right: 100px;
+}
+
+.savings-progress-bar {
+    width: 600px;
+    height: 30px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 10px;
+    background-color: #20690a;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.savings-progress-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.savings-create-goal:hover {
+    background-color: #ddd;
+}

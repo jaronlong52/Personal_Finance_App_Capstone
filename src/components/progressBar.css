@@ -1,0 +1,106 @@
+.progress-container {
+    width: 800px;
+    margin-top: 10px;
+    border: solid;
+    border-color: rgb(100, 100, 100);
+    border-width: 2px;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.progress-bar {
+    width: 600px;
+    height: 30px;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: rgb(100, 100, 100);
+    background-color: #e6e6e6;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.progress-bar-label {
+    display: flex;
+    flex-direction: row;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 8px;
+    background-color: #20690a;
+    transition: width 0.5s ease-out;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.progress-label {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.progress-item-label {
+    margin-right: 100px;
+}
+
+.progress-goal-label {
+    margin-right: 100px;
+}
+
+.progress-ratio-label {
+    display: flex;
+    flex-direction: row;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+.progress-input-container {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.progress-input {
+    border-radius: 5px;
+    border: solid 1px;
+    padding: 6px;
+}
+
+.progress-contribute {
+    margin-left: 10px;
+    border-radius: 5px;
+    border: solid 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.progress-reset {
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: solid 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.progress-delete {
+    border-radius: 5px;
+    border: solid 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.progress-contribute:hover,
+.progress-reset:hover,
+.progress-delete:hover {
+    background-color: #ddd;
+}

@@ -1,0 +1,13 @@
+.combinedChart {
+    display: flex; /* Use flexbox layout */
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.piecombiner-data {
+    margin-left: 90px;
+}
+
+.piecombiner-piechart {
+    margin-top: 70px;
+}
