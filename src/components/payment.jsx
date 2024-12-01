@@ -30,28 +30,28 @@ const Payment = () => {
     const getTotalPayment = () => {
         axios.post('http://localhost:8081/income/getTotal', {username: variable})
         .then(res => {
-          console.log(res)
-          const data = res.data;
-          const object = data[0];
-          setBalance(Number(object.income) - Number(object.payment));
-          setTotalPayment(object.payment);
+            const data = res.data;
+            const object = data[0];
+            if (isNaN(object.income) === false && isNaN(object.payment) === false) {
+                setBalance(Number(object.income) - Number(object.payment));
+                setTotalPayment(object.payment);
+          }
         });
     }
 
     const getRecords = () => {
         axios.post('http://localhost:8081/payment/getRecords', {username: variable, pastDate: pastDate,})
         .then(res => {
-          console.log(res)
-          setData(res.data);
+            setData(res.data);
         });
     }
 
     const inputRecord = () => {
         const total = Number(totalPayment) + Number(amount);
         axios.post('http://localhost:8081/payment/inputRecord', {username: variable, date: date, amount: amount, comments: comments, total: total})
-        .then(res => {
-          console.log(res);
-        });
+            .then(res => {
+                console.log(res);
+            });
         setDate('');
         setAmount('');
         setComments('');

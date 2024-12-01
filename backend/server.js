@@ -25,6 +25,13 @@ app.post('/register', (req, res) => {
             console.log(err);
         }
     );
+
+    db.query('INSERT INTO totals (username, income, payment, monthlyIncome) VALUES (?,?,?,?)', 
+        [username, 0, 0, 0],
+        (err, result) => {
+            console.log(err);
+        }
+    );
 });
 
 app.post('/login', (req, res) => {

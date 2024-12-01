@@ -16,7 +16,6 @@ function FullPie() {
         axios.post('http://localhost:8081/budget/getBudget', {username: variable})
         .then(res => {
             setData(res.data);
-            console.log(res);
         });
     }
 

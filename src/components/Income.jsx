@@ -30,18 +30,18 @@ const Income = () => {
     const getTotalIncome = () => {
         axios.post('http://localhost:8081/income/getTotal', {username: variable})
         .then(res => {
-          console.log(res)
-          const data = res.data;
-          const object = data[0];
-          setTotalIncome(object.income);
-          setBalance(Number(object.income) - Number(object.payment));
+            const data = res.data;
+            const object = data[0];
+            if (isNaN(object.income) === false && isNaN(object.payment) === false) {
+                setTotalIncome(object.income);
+                setBalance(Number(object.income) - Number(object.payment));
+          }
         });
     }
 
     const getRecords = () => {
         axios.post('http://localhost:8081/income/getRecords', {username: variable, pastDate: pastDate,})
         .then(res => {
-          console.log(res)
           setData(res.data);
         });
     }
