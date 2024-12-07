@@ -16,11 +16,14 @@ function Preview() {
         .then(res => {
             const data = res.data;
             const firstObject = data[0];
-            if (isNaN(firstObject.income) === false && isNaN(firstObject.income) === false) {
+            if (isNaN(firstObject.income) === false && isNaN(firstObject.payment) === false) {
                 setIncome(firstObject.income);
                 setPayment(firstObject.payment);
                 setBalance(Number(firstObject.income) - Number(firstObject.payment));
             }
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
@@ -28,6 +31,9 @@ function Preview() {
         axios.post('http://localhost:8081/preview/getSavings', {username: variable})
         .then(res => {
             setSavings(res.data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
