@@ -209,6 +209,27 @@ app.post('/savings/addGoal', (req, res) => {
     );
 });
 
+app.post('/savings/getBalance', (req, res) => {
+    const username = req.body.username;
+    db.query('SELECT * FROM totals WHERE username = ?', [username], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+});
+
+app.post('/savings/updatePayments', (req, res) => {
+
+    const username = req.body.username;
+    const amount = req.body.amount;
+
+    db.query('UPDATE totals SET payment = ? WHERE username = ?',
+        [amount, username],
+        (err, result) => {
+            console.log(err);
+        }
+    );
+});
+
 app.post('/savings/getGoals', (req, res) => {
     const username = req.body.username;
     const state = 'in progress';

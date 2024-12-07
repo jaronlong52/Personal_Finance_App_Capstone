@@ -27,6 +27,7 @@ const ProgressBar = (props) => {
                 
                 let progressPercentage = (temp.toFixed(2) / goal) * 100;
                 let progWidth = progressPercentage < 100 ? progressPercentage : 100;
+                props.updateBalance(amount);
                 addContribute(temp.toFixed(2) < goal ? temp.toFixed(2) : goal , progWidth);
             }
             setAmount('');

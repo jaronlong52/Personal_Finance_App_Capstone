@@ -15,6 +15,9 @@ const Savings = (props) => {
 
     const { variable } = useContext(UsernameContext);
 
+    const [balance, setBalance] = useState(0);
+    const [totalPayment, setTotalPayment] = useState(0);
+
     const handleDeleteGoal = (targetIndex) => {
         const newGoals = goals.filter(goal => goal.id !== targetIndex);
         setGoals(newGoals);
@@ -52,6 +55,29 @@ const Savings = (props) => {
         setGoalAmount('');
     }
 
+    const getBalance = () => {
+        axios.post('http://localhost:8081/savings/getBalance', {username: variable})
+        .then(res => {
+            const data = res.data;
+            const object = data[0];
+            if (isNaN(object.income) === false && isNaN(object.payment) === false) {
+                setBalance(Number(object.income) - Number(object.payment));
+                setTotalPayment(Number(object.payment));
+            }
+        });
+    }
+
+    const updateBalanceOnContribution = (contributionAmount) => {
+        setBalance(prevBalance => prevBalance - contributionAmount);
+        axios.post('http://localhost:8081/savings/updatePayments', { username: variable, amount: (Number(totalPayment) + Number(contributionAmount)) })
+            .then(res => {
+                console.log("Payments updated");
+            })
+            .catch(error => {
+                console.error("Error updating payments:", error);
+            });
+    };
+
     const addGoal = (dateID) => {
         axios.post('http://localhost:8081/savings/addGoal', {username: variable, dateID: dateID, title: goalTitle, amount: goalAmount, progress: 0, percentage: 0})
         .then(res => {
@@ -79,6 +105,7 @@ const Savings = (props) => {
                 progress: parseFloat(goal.progress),
                 deleteGoal: {handleDeleteGoal},
                 moveToComplete: {handleCompleted},
+                updateBalance: {updateBalanceOnContribution}
             }));
 
             setGoals(prevGoals => {
@@ -112,6 +139,7 @@ const Savings = (props) => {
                 amount: parseFloat(goal.amount),
                 deleteGoal: {handleDeleteGoal},
                 moveToComplete: {handleCompleted},
+                updateBalance: {updateBalanceOnContribution}
             }));
 
             setCompletedGoals(prevGoals => {
@@ -143,10 +171,12 @@ const Savings = (props) => {
     useEffect(() => {
         getGoals();
         getCompleted();
+        getBalance();
       }, []);
 
     return (
         <div className='savings-container'>
+            <h3>Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
             <div className='savings-new-goal'>
                 <input className='savings-title-input' type="text" value={goalTitle} placeholder='Title' onChange={e => setGoalTitle(e.target.value)}/>
                 <input className='savings-amount-input' type='float' value={goalAmount} placeholder='$' onChange={e => setGoalAmount(e.target.value)}/>
@@ -164,6 +194,7 @@ const Savings = (props) => {
                         progress={goal.progress}
                         deleteGoal={handleDeleteGoal}
                         moveToComplete={handleCompleted}
+                        updateBalance={updateBalanceOnContribution}
                     />
                 ))}
             </div>
@@ -171,7 +202,7 @@ const Savings = (props) => {
                 <h1 className="savings-completed-label">Completed</h1>
                 <div>{noCompletedGoals}</div>
                 {completedGoals.map(goal => (
-                    <div>
+                    <div key={goal.id}>
                         <div className='savings-completed-item'>
                             <div className='savings-completed-item-label'>
                                 <div className='savings-completed-title'>{goal.title}</div>
