@@ -15,10 +15,14 @@ const Savings = (props) => {
 
     const { variable } = useContext(UsernameContext);
 
+    // current balance
+    const [balance, setBalance] = useState(0);
+
     const handleDeleteGoal = (targetIndex) => {
         const newGoals = goals.filter(goal => goal.id !== targetIndex);
         setGoals(newGoals);
         deleteGoal(targetIndex);
+        getBalance();
     }
 
     const handleCompleted = (targetIndex) => {
@@ -44,6 +48,7 @@ const Savings = (props) => {
             progress: 0,
             deleteGoal: {handleDeleteGoal},
             moveToComplete: {handleCompleted},
+            getBalance: {getBalance}
         }
 
         setGoals([...goals, newGoal]);
@@ -52,17 +57,32 @@ const Savings = (props) => {
         setGoalAmount('');
     }
 
+    const getBalance = () => {
+        axios.post('http://localhost:8081/savings/getBalance', {username: variable})
+        .then(res => {
+            const data = res.data;
+            const object = data[0];
+            if (isNaN(object.income) === false && isNaN(object.payment) === false) {
+                setBalance(Number(object.income) - Number(object.payment));
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
     const addGoal = (dateID) => {
         axios.post('http://localhost:8081/savings/addGoal', {username: variable, dateID: dateID, title: goalTitle, amount: goalAmount, progress: 0, percentage: 0})
         .then(res => {
-          console.log(res);
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
     const getGoals = () => {
         axios.post('http://localhost:8081/savings/getGoals', {username: variable})
         .then(res => {
-            console.log(res)
             const data = res.data;
 
             if (data.length === 0) {
@@ -79,6 +99,7 @@ const Savings = (props) => {
                 progress: parseFloat(goal.progress),
                 deleteGoal: {handleDeleteGoal},
                 moveToComplete: {handleCompleted},
+                getBalance: {getBalance}
             }));
 
             setGoals(prevGoals => {
@@ -90,13 +111,15 @@ const Savings = (props) => {
                 });
                 return updatedGoals;
             });
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
     const getCompleted = () => {
         axios.post('http://localhost:8081/savings/getCompleted', {username: variable})
         .then(res => {
-            console.log(res)
             const data = res.data;
 
             if (data.length === 0) {
@@ -112,6 +135,7 @@ const Savings = (props) => {
                 amount: parseFloat(goal.amount),
                 deleteGoal: {handleDeleteGoal},
                 moveToComplete: {handleCompleted},
+                getBalance: {getBalance}
             }));
 
             setCompletedGoals(prevGoals => {
@@ -123,30 +147,39 @@ const Savings = (props) => {
                 });
                 return updatedGoals;
             });
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
     const markCompleted = (targetIndex) => {
         axios.post('http://localhost:8081/savings/markCompleted', {username: variable, dateID: targetIndex})
         .then(res => {
-          console.log(res);
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
     const deleteGoal = (targetIndex) => {
         axios.post('http://localhost:8081/savings/deleteGoal', {username: variable, dateID: targetIndex})
         .then(res => {
-          console.log(res);
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
     useEffect(() => {
         getGoals();
         getCompleted();
+        getBalance();
       }, []);
 
     return (
         <div className='savings-container'>
+            <h3>Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
             <div className='savings-new-goal'>
                 <input className='savings-title-input' type="text" value={goalTitle} placeholder='Title' onChange={e => setGoalTitle(e.target.value)}/>
                 <input className='savings-amount-input' type='float' value={goalAmount} placeholder='$' onChange={e => setGoalAmount(e.target.value)}/>
@@ -164,6 +197,7 @@ const Savings = (props) => {
                         progress={goal.progress}
                         deleteGoal={handleDeleteGoal}
                         moveToComplete={handleCompleted}
+                        getBalance={getBalance}
                     />
                 ))}
             </div>
@@ -171,7 +205,7 @@ const Savings = (props) => {
                 <h1 className="savings-completed-label">Completed</h1>
                 <div>{noCompletedGoals}</div>
                 {completedGoals.map(goal => (
-                    <div>
+                    <div key={goal.id}>
                         <div className='savings-completed-item'>
                             <div className='savings-completed-item-label'>
                                 <div className='savings-completed-title'>{goal.title}</div>
