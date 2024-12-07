@@ -15,13 +15,14 @@ const Savings = (props) => {
 
     const { variable } = useContext(UsernameContext);
 
+    // current balance
     const [balance, setBalance] = useState(0);
-    const [totalPayment, setTotalPayment] = useState(0);
 
     const handleDeleteGoal = (targetIndex) => {
         const newGoals = goals.filter(goal => goal.id !== targetIndex);
         setGoals(newGoals);
         deleteGoal(targetIndex);
+        getBalance();
     }
 
     const handleCompleted = (targetIndex) => {
@@ -47,6 +48,7 @@ const Savings = (props) => {
             progress: 0,
             deleteGoal: {handleDeleteGoal},
             moveToComplete: {handleCompleted},
+            getBalance: {getBalance}
         }
 
         setGoals([...goals, newGoal]);
@@ -62,33 +64,25 @@ const Savings = (props) => {
             const object = data[0];
             if (isNaN(object.income) === false && isNaN(object.payment) === false) {
                 setBalance(Number(object.income) - Number(object.payment));
-                setTotalPayment(Number(object.payment));
             }
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
-
-    const updateBalanceOnContribution = (contributionAmount) => {
-        setBalance(prevBalance => prevBalance - contributionAmount);
-        axios.post('http://localhost:8081/savings/updatePayments', { username: variable, amount: (Number(totalPayment) + Number(contributionAmount)) })
-            .then(res => {
-                console.log("Payments updated");
-            })
-            .catch(error => {
-                console.error("Error updating payments:", error);
-            });
-    };
 
     const addGoal = (dateID) => {
         axios.post('http://localhost:8081/savings/addGoal', {username: variable, dateID: dateID, title: goalTitle, amount: goalAmount, progress: 0, percentage: 0})
         .then(res => {
-          console.log(res);
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
     const getGoals = () => {
         axios.post('http://localhost:8081/savings/getGoals', {username: variable})
         .then(res => {
-            console.log(res)
             const data = res.data;
 
             if (data.length === 0) {
@@ -105,7 +99,7 @@ const Savings = (props) => {
                 progress: parseFloat(goal.progress),
                 deleteGoal: {handleDeleteGoal},
                 moveToComplete: {handleCompleted},
-                updateBalance: {updateBalanceOnContribution}
+                getBalance: {getBalance}
             }));
 
             setGoals(prevGoals => {
@@ -117,13 +111,15 @@ const Savings = (props) => {
                 });
                 return updatedGoals;
             });
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
     const getCompleted = () => {
         axios.post('http://localhost:8081/savings/getCompleted', {username: variable})
         .then(res => {
-            console.log(res)
             const data = res.data;
 
             if (data.length === 0) {
@@ -139,7 +135,7 @@ const Savings = (props) => {
                 amount: parseFloat(goal.amount),
                 deleteGoal: {handleDeleteGoal},
                 moveToComplete: {handleCompleted},
-                updateBalance: {updateBalanceOnContribution}
+                getBalance: {getBalance}
             }));
 
             setCompletedGoals(prevGoals => {
@@ -151,20 +147,27 @@ const Savings = (props) => {
                 });
                 return updatedGoals;
             });
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
     const markCompleted = (targetIndex) => {
         axios.post('http://localhost:8081/savings/markCompleted', {username: variable, dateID: targetIndex})
         .then(res => {
-          console.log(res);
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
     const deleteGoal = (targetIndex) => {
         axios.post('http://localhost:8081/savings/deleteGoal', {username: variable, dateID: targetIndex})
         .then(res => {
-          console.log(res);
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
@@ -194,7 +197,7 @@ const Savings = (props) => {
                         progress={goal.progress}
                         deleteGoal={handleDeleteGoal}
                         moveToComplete={handleCompleted}
-                        updateBalance={updateBalanceOnContribution}
+                        getBalance={getBalance}
                     />
                 ))}
             </div>
