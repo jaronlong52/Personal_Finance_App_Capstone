@@ -14,7 +14,6 @@ function Preview() {
     const getTotals = () => {
         axios.post('http://localhost:8081/preview/getTotals', {username: variable})
         .then(res => {
-            console.log(res);
             const data = res.data;
             const firstObject = data[0];
             if (isNaN(firstObject.income) === false && isNaN(firstObject.income) === false) {
