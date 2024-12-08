@@ -86,7 +86,7 @@ const DataManager = ({ labels, dataPoints, setLabels, setDataPoints }) => {
     return (
         <div className="controlpie-container">
             <div className='controlpie-monthly-info'>
-                <h2>Monthly Budget Manager</h2>
+                <h2 className='controlpie-dataManager-title'>Monthly Budget Manager</h2>
                 <hr className='controlpie-divider'/>
                 <div className='controlpie-monthly-update'>
                     <h3 className='controlpie-monthlyIncome-title'>Monthly Income: ${monthlyIncome}</h3>

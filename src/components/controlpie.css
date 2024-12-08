@@ -5,10 +5,15 @@
     padding-bottom: 20px;
     margin-top: 30px;
     margin-bottom: 40px;
+    margin-left: -15px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.789);
     height: auto;
+}
+
+.controlpie-dataManager-title {
+    color: #184a08;
 }
 
 .controlpie-monthly-update {
@@ -18,7 +23,7 @@
 }
 
 .controlpie-monthlyIncome-title {
-    margin-right: 168px;
+    margin-right: 130px;
     margin-top: 19px;
 }
 
@@ -58,25 +63,31 @@
     width: 250px;
     padding: 10px;
     margin-right: 10px;
-    border: 2px solid rgb(100, 100, 100);
+    border: 2px solid rgb(0, 74, 10);
     border-radius: 5px;
+    background: #ecffe8;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
 .controlpie-amount {
     width: 125px;
     padding: 10px;
     margin-right: 10px;
-    border: 2px solid rgb(100, 100, 100);
+    border: 2px solid rgb(0, 74, 10);
     border-radius: 5px;
+    background: #ecffe8;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
 .controlpie-add-button {
     width: 100px;
     padding: 10px;
-    border: 2px solid rgb(100, 100, 100);
+    border: 2px solid rgb(0, 74, 10);
     border-radius: 5px;
     color: black;
+    background: #c2e8b8;
     cursor: pointer;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
 .controlpie-data-body {
@@ -95,13 +106,15 @@
 
 .controlpie-remove-button {
     width: 120px;
-    border: 2px solid rgb(100, 100, 100);
+    border: 2px solid rgb(0, 74, 10);
+    background: #c2e8b8;
     border-radius: 4px;
     margin-right: 175px;
     cursor: pointer;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
 .controlpie-remove-button:hover,
 .controlpie-add-button:hover {
-    background-color: #ddd;
+    background-color: #9eee8e;
 }

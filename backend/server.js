@@ -74,6 +74,19 @@ app.get('/users', (req, res) => {
     )
 });
 
+app.post('/dashboard/getName', (req, res) => {
+    const username = req.body.username;
+    db.query("SELECT name FROM users WHERE username = ?", [username],
+        (err, data) => {
+            if (err) {
+                console.error('Error during progress update:', err);
+                return res.status(500).json({ error: 'Database error' });
+            }
+            return res.json(data);
+        }
+    )
+});
+
 app.post('/preview/getTotals', (req, res) => {
     const username = req.body.username;
     db.query('SELECT * FROM totals WHERE username = ?', [username], 

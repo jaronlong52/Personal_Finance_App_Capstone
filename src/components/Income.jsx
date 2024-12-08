@@ -94,7 +94,7 @@ const Income = () => {
 
     return (
         <div className="income-container">
-            <h3>Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
+            <h3 className='current-balance' style={{background: balance < 0 ? "#db3737" : "#448633"}}>Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
             <div className="income-inputs">
                 <input className="income-input" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 <input className="income-input" value={amount} placeholder='$' onChange={(e) => setAmount(e.target.value)}/>
