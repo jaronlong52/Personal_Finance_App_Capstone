@@ -124,37 +124,6 @@ app.post('/income/getRecords', (req, res) => {
     });
 });
 
-// app.post('/income/inputRecord', (req, res) => {
-
-//     const username = req.body.username;
-//     const date = req.body.date;
-//     const amount = req.body.amount;
-//     const comments = req.body.comments;
-//     const total = req.body.total;
-
-//     db.query('INSERT INTO income (username, date, amount, comments) VALUES (?,?,?,?)', 
-//         [username, date, amount, comments],
-//         (err, data) => {
-//             if (err) {
-//                 console.error('Error during progress update:', err);
-//                 return res.status(500).json({ error: 'Database error' });
-//             }
-//             return res.json(data);
-//         }
-//     );
-
-//     db.query('UPDATE totals SET income = ? WHERE username = ?',
-//         [total, username],
-//         (err, data) => {
-//             if (err) {
-//                 console.error('Error during progress update:', err);
-//                 return res.status(500).json({ error: 'Database error' });
-//             }
-//             return res.json(data);
-//         }
-//     );
-// });
-
 app.post('/income/inputRecord', (req, res) => {
 
     const username = req.body.username;
@@ -235,37 +204,6 @@ app.post('/payment/getRecords', (req, res) => {
         return res.json(data);
     });
 });
-
-// app.post('/payment/inputRecord', (req, res) => {
-
-//     const username = req.body.username;
-//     const date = req.body.date;
-//     const amount = req.body.amount;
-//     const comments = req.body.comments;
-//     const total = req.body.total;
-
-//     db.query('INSERT INTO payment (username, date, amount, comments) VALUES (?,?,?,?)', 
-//         [username, date, amount, comments],
-//         (err, data) => {
-//             if (err) {
-//                 console.error('Error during progress update:', err);
-//                 return res.status(500).json({ error: 'Database error' });
-//             }
-//             return res.json(data);
-//         }
-//     );
-
-//     db.query('UPDATE totals SET payment = ? WHERE username = ?',
-//     [total, username],
-//     (err, data) => {
-//         if (err) {
-//             console.error('Error during progress update:', err);
-//             return res.status(500).json({ error: 'Database error' });
-//         }
-//         return res.json(data);
-//     }
-// );
-// });
 
 app.post('/payment/inputRecord', (req, res) => {
 
