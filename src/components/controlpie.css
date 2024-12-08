@@ -65,7 +65,7 @@
     margin-right: 10px;
     border: 2px solid rgb(0, 74, 10);
     border-radius: 5px;
-    background: #ecffe8;
+    background: #f4fff2;
     box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
@@ -75,7 +75,7 @@
     margin-right: 10px;
     border: 2px solid rgb(0, 74, 10);
     border-radius: 5px;
-    background: #ecffe8;
+    background: #f4fff2;
     box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
@@ -85,7 +85,7 @@
     border: 2px solid rgb(0, 74, 10);
     border-radius: 5px;
     color: black;
-    background: #c2e8b8;
+    background: #f4fff2;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
@@ -107,7 +107,7 @@
 .controlpie-remove-button {
     width: 120px;
     border: 2px solid rgb(0, 74, 10);
-    background: #c2e8b8;
+    background: #f4fff2;
     border-radius: 4px;
     margin-right: 175px;
     cursor: pointer;

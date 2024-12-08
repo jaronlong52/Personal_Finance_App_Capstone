@@ -7,6 +7,7 @@
     padding-bottom: 15px;
     padding-left: 50px;
     padding-right: 50px;
+    background: #fcfffb;
     box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
@@ -69,7 +70,7 @@
     border-radius: 5px;
     border: solid 1px;
     padding: 6px;
-    background: #ecffe8;
+    background: #f4fff2;
     box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
@@ -79,7 +80,7 @@
     border: solid 1px;
     padding-left: 10px;
     padding-right: 10px;
-    background: #c2e8b8;
+    background: #f4fff2;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
@@ -91,7 +92,7 @@
     border: solid 1px;
     padding-left: 10px;
     padding-right: 10px;
-    background: #c2e8b8;
+    background: #f4fff2;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
@@ -101,7 +102,7 @@
     border: solid 1px;
     padding-left: 10px;
     padding-right: 10px;
-    background: #c2e8b8;
+    background: #f4fff2;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }

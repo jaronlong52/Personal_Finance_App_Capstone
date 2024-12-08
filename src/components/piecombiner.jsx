@@ -37,7 +37,10 @@ function FullPie() {
 
     return (
         <div className="combinedChart">
-            <div className="piecombiner-piechart"><PieChart labels={labels} dataPoints={dataPoints} /></div>
+            <div className='piecombiner-piechart-container'>
+                <h2 className='piecombiner-piechart-title'>Budget</h2>
+                <div className="piecombiner-piechart"><PieChart labels={labels} dataPoints={dataPoints} /></div>
+            </div>
             <div className="piecombiner-data"><DataManager labels={labels} dataPoints={dataPoints} setLabels={setLabels} setDataPoints={setDataPoints} /></div>
         </div>
     );
