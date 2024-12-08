@@ -51,19 +51,7 @@
 }
 
 .payment-dropdown-class {
-    width: 100px;
-    height: 30px;
-    font-size: 15px;
-    font-weight: 500;
-    border-radius: 5px;
-    border: 2px, solid, rgb(0, 74, 10);
-    background-color: #f4fff2;
-    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
-    cursor: pointer;
-}
-
-.payment-get-records {
-    width: 110px;
+    width: 150px;
     height: 30px;
     font-size: 15px;
     font-weight: 500;

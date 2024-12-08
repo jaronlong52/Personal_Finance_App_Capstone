@@ -114,7 +114,7 @@ app.post('/preview/getSavings', (req, res) => {
 app.post('/income/getRecords', (req, res) => {
     const username = req.body.username;
     const pastDate = req.body.pastDate;
-    db.query('SELECT * FROM income WHERE username = ? and date >= ?', [username, pastDate], 
+    db.query('SELECT * FROM income WHERE username = ? and date >= ? ORDER BY date DESC', [username, pastDate], 
     (err, data) => {
         if (err) {
             console.error('Error during progress update:', err);
@@ -195,7 +195,7 @@ app.post('/income/getTotal', (req, res) => {
 app.post('/payment/getRecords', (req, res) => {
     const username = req.body.username;
     const pastDate = req.body.pastDate;
-    db.query('SELECT * FROM payment WHERE username = ? and date >= ?', [username, pastDate], 
+    db.query('SELECT * FROM payment WHERE username = ? and date >= ? ORDER BY date DESC', [username, pastDate], 
     (err, data) => {
         if (err) {
             console.error('Error during progress update:', err);

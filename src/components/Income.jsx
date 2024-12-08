@@ -25,6 +25,7 @@ const Income = () => {
         { value: '2 Weeks', label: '2 Weeks'},
         { value: '1 Month', label: '1 Month'},
         { value: '3 Months', label: '3 Months'},
+        { value: 'All Time', label: 'All Time'},
     ]
 
     const getTotalIncome = () => {
@@ -48,45 +49,53 @@ const Income = () => {
 
     const inputRecord = () => {
         const total = Number(amount) + Number(totalIncome);
-        axios.post('http://localhost:8081/income/inputRecord', {username: variable, date: date, amount: amount, comments: comments, total: total})
-        .then(res => {
-          console.log(res);
-        });
-        setDate('');
-        setAmount('');
-        setComments('');
+        axios.post('http://localhost:8081/income/inputRecord', { username: variable, date: date, amount: amount, comments: comments, total: total })
+            .then(res => {
+                setDate('');
+                setAmount('');
+                setComments('');
+                getRecords();
+            })
+            .catch(err => {
+                console.error("Error adding record:", err);
+            });
     }
-
+    
     const dropdown = (e) => {
         setSelected(e.target.value);
+        const newPast = new Date(currentDate);
         switch(e.target.value) {
             case 'Today':
-                setPastDate(`${currentDate.getFullYear()}-${currentDate.getMonth()+1}-${currentDate.getDate()}`);
+                setPastDate(`${newPast.getFullYear()}-${newPast.getMonth() + 1}-${newPast.getDate()}`);
                 break;
             case '1 Week':
-                past.setDate(currentDate.getDate() - 7);
-                setPastDate(`${past.getFullYear()}-${past.getMonth()+1}-${past.getDate()}`);
+                newPast.setDate(currentDate.getDate() - 7);
+                setPastDate(`${newPast.getFullYear()}-${newPast.getMonth() + 1}-${newPast.getDate()}`);
                 break;
             case '2 Weeks':
-                past.setDate(currentDate.getDate() - 14);
-                setPastDate(`${past.getFullYear()}-${past.getMonth()+1}-${past.getDate()}`);
+                newPast.setDate(currentDate.getDate() - 14);
+                setPastDate(`${newPast.getFullYear()}-${newPast.getMonth() + 1}-${newPast.getDate()}`);
                 break;
             case '1 Month':
-                past.setDate(currentDate.getDate() - 30);
-                setPastDate(`${past.getFullYear()}-${past.getMonth()+1}-${past.getDate()}`);
+                newPast.setDate(currentDate.getDate() - 30);
+                setPastDate(`${newPast.getFullYear()}-${newPast.getMonth() + 1}-${newPast.getDate()}`);
                 break;
             case '3 Months':
-                past.setDate(currentDate.getDate() - 90);
-                setPastDate(`${past.getFullYear()}-${past.getMonth()+1}-${past.getDate()}`);
+                newPast.setDate(currentDate.getDate() - 90);
+                setPastDate(`${newPast.getFullYear()}-${newPast.getMonth() + 1}-${newPast.getDate()}`);
+                break;
+            case 'All Time':
+                newPast.setDate(currentDate.getDate() - 10000);
+                setPastDate(`${newPast.getFullYear()}-${newPast.getMonth() + 1}-${newPast.getDate()}`);
                 break;
             default:
-                setPastDate(`${currentDate.getFullYear()}-${currentDate.getMonth()+1}-${currentDate.getDate()}`);
+                setPastDate(`${newPast.getFullYear()}-${newPast.getMonth() + 1}-${newPast.getDate()}`);
         }
     }
 
     useEffect(() => {
         getRecords();
-    }, [date]);
+    }, [pastDate]);
 
     useEffect(() => {
         getTotalIncome();
@@ -113,7 +122,6 @@ const Income = () => {
                         </option>
                     ))}
                 </select>
-                <button className='income-get-records' onClick={getRecords}>Get Records</button>
             </div>
             <table className="income-table">
                     <thead>
