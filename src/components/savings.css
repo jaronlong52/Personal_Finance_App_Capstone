@@ -8,45 +8,49 @@
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    border: 2px solid rgb(100, 100, 100);
+    border: 2px, solid, rgb(0, 74, 10);
     border-radius: 5px;
     width: 450px;
     height: 25px;
-    background: #eaeaea;
+    background: #ecffe8;
     font-size: 19px;
     font-weight: 300;
     color: #000000;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
 .savings-amount-input {
     padding: 10px;
     width: 230px;
     margin: 10px;
-    border: 2px solid rgb(100, 100, 100);
+    border: 2px, solid, rgb(0, 74, 10);
     border-radius: 5px;
     font-size: 19px;
     font-weight: 300;
-    background: #eaeaea;
+    background: #ecffe8;
     color: #000000;
     height: 25px;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
 .savings-create-goal {
     padding: 10px;
     width: 210px;
     margin: 10px;
-    border: 2px solid rgb(100, 100, 100);
+    border: 2px, solid, rgb(0, 74, 10);
     border-radius: 5px;
     cursor: pointer;
     font-size: 19px;
     font-weight: 300;
-    background: #eaeaea;
+    background: #c2e8b8;
     color: #000000;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
 .savings-inProgress-label {
     margin-top: 20px;
     margin-bottom: 15px;
+    color: #184a08;
 }
 
 .savings-ratio-label {
@@ -61,19 +65,19 @@
 .savings-completed-label {
     margin-top: 20px;
     margin-bottom: 15px;
+    color: #184a08;
 }
 
 .savings-completed-item {
     width: 800px;
-    border: solid;
     border-radius: 10px;
-    border-color: rgb(100, 100, 100);
-    border-width: 2px;
+    border: 2px, solid, rgb(0, 74, 10);
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 50px;
     padding-right: 50px;
     margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
 .savings-completed-item-label {
@@ -88,12 +92,13 @@
 .savings-progress-bar {
     width: 600px;
     height: 30px;
-    border: 2px solid rgb(100, 100, 100);
+    border: 2px solid rgb(0, 47, 6);
     border-radius: 10px;
     background-color: #20690a;
     margin-top: 20px;
     margin-bottom: 10px;
     margin-right: 20px;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
 .savings-progress-item {
@@ -102,5 +107,5 @@
 }
 
 .savings-create-goal:hover {
-    background-color: #ddd;
+    background-color: #9eee8e;
 }

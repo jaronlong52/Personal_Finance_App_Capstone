@@ -12,6 +12,7 @@ import axios from 'axios';
 
 function Dashboard() {
   const [toggleState, setToggleState] = useState(1);
+  const [name, setName] = useState('');
 
   const { variable } = useContext(UsernameContext);
 
@@ -29,11 +30,20 @@ function Dashboard() {
       });
   }
 
+  const getName = () => {
+    axios.post('http://localhost:8081/dashboard/getName', {username: variable})
+    .then(res => {
+      const object = res.data[0];
+      setName(object.name);
+    });
+}
+
   const amounts = data.map(item => item.amount);
   const allLabels = data.map(item => item.label);
 
   useEffect(() => {
       getBudget();
+      // getName();
     }, []);
 
   useEffect(() => {
@@ -99,6 +109,7 @@ function Dashboard() {
       <div className="content-tabs">
         {toggleState === 1 && (
           <div className="tabs active-tabs">
+            {/* <div className='dashboard-greeting'>Hello {name}!</div> */}
             <div className='fullpre'>
               <div><Preview/></div>
               <div className='dashboard-budget-container'>

@@ -9,12 +9,16 @@
     cursor: default;
     margin-top: 26px;
     margin-bottom: 30px;
+    border-color: rgb(0, 74, 10);
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
   }
   
 .income-table th {
     border: 1px solid #bdbdbd;
     padding: 8px;
     text-align: left;
+    border-color: rgb(10, 103, 22);
+    border-width: 2px;
     cursor: default;
 }
 
@@ -33,6 +37,8 @@
     padding: 8px;
     text-align: left;
     font-weight: 400;
+    border-color: rgba(0, 74, 10, 0.511);
+    border-width: 2px;
     cursor: default;
 }
 
@@ -50,7 +56,9 @@
     font-size: 15px;
     font-weight: 500;
     border-radius: 5px;
-    border: 1.5px, solid, #1e1e1e;
+    border: 2px, solid, rgb(0, 74, 10);
+    background: #ecffe8;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
     cursor: pointer;
 }
 
@@ -60,7 +68,9 @@
     font-size: 15px;
     font-weight: 500;
     border-radius: 5px;
-    border: 1.5px, solid, #1e1e1e;
+    border: 2px, solid, rgb(0, 74, 10);
+    background-color: #c2e8b8;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
     cursor: pointer;
 }
 
@@ -77,13 +87,14 @@
     margin: auto;
     width: 450px;
     height: 25px;
-    background: #eaeaea;
+    background: #ecffe8;
     border-radius: 5px;
-    border: 2px, solid, rgb(100, 100, 100);
+    border: 2px, solid, rgb(0, 74, 10);
     font-size: 19px;
     padding: 10px;
     font-weight: 300;
     color: #000000;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
 .income-comments{
@@ -92,13 +103,14 @@
     margin: auto;
     width: 650px;
     height: 25px;
-    background: #eaeaea;
+    background: #ecffe8;
     border-radius: 5px;
-    border: 2px, solid, rgb(100, 100, 100);
+    border: 2px, solid, rgb(0, 74, 10);
     font-size: 19px;
     padding: 10px;
     font-weight: 300;
     color: #000000;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
 .income-submit{
@@ -106,14 +118,33 @@
     justify-content: center;
     align-items: center;
     width: 250px;
-    background: #eaeaea;
+    background-color: #c2e8b8;
     border-radius: 5px;
-    border: 2px, solid, rgb(100, 100, 100);
+    border: 2px, solid, rgb(0, 74, 10);
     font-size: 19px;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
     cursor: pointer;
+}
+
+.current-balance {
+    display: flex;
+    font-size: x-large;
+    font-weight: 800;
+    font-family: cambria;
+    color: rgb(255, 255, 255);
+    border: solid, rgb(7, 26, 1);
+    border-radius: 5px;
+    width: fit-content;
+    padding-top: 10px;
+    padding-bottom: 11px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 32px;
+    margin-left: 15px;
+    box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
 }
 
 .income-submit:hover,
 .income-get-records:hover {
-    background-color: #ddd;
+    background-color: #9eee8e;
 }

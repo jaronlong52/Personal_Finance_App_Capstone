@@ -179,7 +179,7 @@ const Savings = (props) => {
 
     return (
         <div className='savings-container'>
-            <h3>Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
+            <h3 className='current-balance'  style={{background: balance < 0 ? "#db3737" : "#448633"}}>Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
             <div className='savings-new-goal'>
                 <input className='savings-title-input' type="text" value={goalTitle} placeholder='Title' onChange={e => setGoalTitle(e.target.value)}/>
                 <input className='savings-amount-input' type='float' value={goalAmount} placeholder='$' onChange={e => setGoalAmount(e.target.value)}/>

@@ -49,7 +49,7 @@ function Preview() {
                 <div className="preview-totals-body">
                     <h3 className="preview-totals-income">Total Income: ${income}</h3>
                     <h3 className="preview-totals-payment">Total Payment: ${payment}</h3>
-                    <h3 className="preview-totals-balance">Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
+                    <h3 className="preview-totals-balance" style={{color: balance < 0 ? "#db3737" : "green"}}>Current Balance: {balance < 0 ? "-" : ""}${Math.abs(balance)}</h3>
                 </div>
             </div>
             <div className="preview-savings-container">

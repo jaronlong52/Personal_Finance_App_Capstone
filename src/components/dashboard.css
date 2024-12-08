@@ -8,6 +8,22 @@
   cursor: default;
 }
 
+.dashboard-greeting {
+  background-color: #4CAF50;
+  border: 2px, solid, rgb(0, 74, 10);
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  width: fit-content;
+  font-size: xxx-large;
+  font-family: cambria;
+  padding: 20px 70px;
+  margin-left: 100px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(98, 113, 96, 0.789);
+}
+
 .fullpre {
   display: flex;
   flex-direction: row;
@@ -24,13 +40,15 @@
   padding: 12px 20px;
   margin-top: 10px;
   margin-left: 8px;
+  font-size: large;
+  font-weight: 500;
   border: 1px solid #ccc;
   border-radius: 4px 4px 0 0;
   background: #ffffff;
   color: #333;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 10px 20px rgba(173, 173, 173, 0.789);
+  box-shadow: 0 10px 15px rgba(173, 173, 173, 0.789);
 }
 
 .active-tabs {
