@@ -11,7 +11,8 @@
 .piecombiner-piechart-container {
     display: flex;
     flex-direction: column;
-    height: 404;
+    width: 380px;
+    height: 495px;
     align-items: center;
     padding-left: 40px;
     padding-right: 40px;
