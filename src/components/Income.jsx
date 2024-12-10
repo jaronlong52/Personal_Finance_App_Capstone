@@ -35,7 +35,7 @@ const Income = () => {
             const object = data[0];
             if (isNaN(object.income) === false && isNaN(object.payment) === false) {
                 setTotalIncome(object.income);
-                setBalance(Number(object.income) - Number(object.payment));
+                setBalance((Number(object.income) - Number(object.payment)).toFixed(2));
           }
         });
     }
