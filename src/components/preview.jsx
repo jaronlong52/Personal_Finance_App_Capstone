@@ -19,7 +19,7 @@ function Preview() {
             if (isNaN(firstObject.income) === false && isNaN(firstObject.payment) === false) {
                 setIncome(firstObject.income);
                 setPayment(firstObject.payment);
-                setBalance(Number(firstObject.income) - Number(firstObject.payment));
+                setBalance((Number(firstObject.income) - Number(firstObject.payment)).toFixed(2));
             }
         })
         .catch(error => {
